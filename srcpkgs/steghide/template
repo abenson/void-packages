@@ -1,0 +1,13 @@
+# Template file for 'steghide'
+pkgname=steghide
+version=0.5.1
+revision=1
+build_style=gnu-configure
+hostmakedepends="libtool gettext"
+makedepends="libjpeg-turbo-devel zlib-devel libmcrypt-devel mhash-devel"
+short_desc="Hide data in various kinds of image- and audio-files"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0"
+homepage="http://steghide.sourceforge.net/index.php"
+distfiles="${SOURCEFORGE_SITE}/${pkgname}/${pkgname}-${version}.tar.bz2"
+checksum=a2c7f879a3e22860879889106cc49e486000653f81448264affa0fd616a47da1
