@@ -1,0 +1,30 @@
+# Template file for 'burpsuite-community'
+pkgname=burpsuite-community
+version=2024.7.5
+revision=1
+build_style=fetch
+hostmakedepends="unzip"
+depends="openjdk21"
+short_desc="Web application security testing tool"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="proprietary"
+homepage="https://www.portswigger.net"
+distfiles="https://portswigger.net/burp/releases/download?product=community&version=$version&type=jar>burpsuite-community.jar"
+checksum=ab701f8ce7e06426bb31a81c9760fd46782abaf69b91a77a00988c5312d86095
+restricted=yes
+skip_extract="burpsuite-community.jar"
+
+_iconame="resources/Media/icon64community.png"
+
+do_build() {
+	unzip burpsuite-community.jar $_iconame
+}
+
+do_install() {
+	vbin ${FILESDIR}/burpsuite-community
+	vmkdir usr/share/burpsuite-community
+	vinstall burpsuite-community.jar 644 usr/share/burpsuite-community
+	vinstall $_iconame 644 usr/share/burpsuite-community icon.png
+	vmkdir usr/share/applications
+	vinstall ${FILESDIR}/burpsuite-community.desktop 644 usr/share/applications
+}
