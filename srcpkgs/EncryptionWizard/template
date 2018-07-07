@@ -1,0 +1,24 @@
+# Template file for 'EncryptionWizard'
+pkgname=EncryptionWizard
+version=3.5.5
+revision=1
+archs=noarch
+wrksrc="EncryptionWizard-Unified-${version}-FIPS"
+hostmakedepends="unzip wget"
+depends="virtual?java-runtime"
+short_desc="Java-based file and folder encryption software"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GOTS-Public"
+homepage="https://www.tens.af.mil/"
+changelog="https://www.spi.dod.mil/ewizard_history.htm"
+distfiles="https://spi.dod.mil/docs/EncryptionWizard-Unified-${version}-FIPS.zip"
+checksum=bffa69a207dfb545a0527ed87899889d5f1aa866be2f96ffc41ebd82e5709222
+
+export SSL_NO_VERIFY_HOSTNAME=1 SSL_NO_VERIFY_PEER=1
+
+do_install() {
+	vbin $FILESDIR/EncryptionWizard
+	vinstall EW-Unified-$version-FIPS.jar 0644 usr/share/$pkgname EW.jar
+	vdoc "Encryption Wizard User Guide v${version//./}.pdf"
+	vdoc "Getting_Started_with_Encryption_Wizard_${version}.txt"
+}
