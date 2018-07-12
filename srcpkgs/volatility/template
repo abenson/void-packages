@@ -1,0 +1,21 @@
+# Template file for 'volatility'
+pkgname=volatility
+version=2.6.1
+revision=1
+noarch=yes
+build_style=python2-module
+pycompile_module="volatility"
+hostmakedepends="python-setuptools"
+depends="python-distorm python-crypto"
+short_desc="Volatile memory extraction utility framework"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://www.volatilityfoundation.org/"
+distfiles="https://github.com/volatilityfoundation/volatility/archive/${version}.tar.gz"
+checksum=4f4891e6235f20d7277534d607509bcb9a392b6e59de216c9a3bac85478d4287
+
+post_install() {
+	vmkdir usr/share/volatility
+	mv "${DESTDIR}/usr/contrib" "${DESTDIR}/usr/share/${pkgname}"
+	mv "${DESTDIR}/usr/tools" "${DESTDIR}/usr/share/${pkgname}"
+}
