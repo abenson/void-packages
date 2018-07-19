@@ -1,0 +1,17 @@
+# Template file for 'bruteforce-salted-openssl'
+pkgname=bruteforce-salted-openssl
+version=1.4.2
+revision=1
+build_style=gnu-configure
+hostmakedepends="automake"
+makedepends="libressl-devel"
+short_desc="Bruteforce files encrypted with the 'openssl' command"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/glv2"
+distfiles="${homepage}/bruteforce-salted-openssl/archive/${version}.tar.gz"
+checksum=324092e60833329a13756b43c51269c1bd4a8cd339490217746ae0ee534efbac
+
+pre_configure() {
+	./autogen.sh
+}
