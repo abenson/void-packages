@@ -1,0 +1,15 @@
+# Template file for 'pdfcrack'
+pkgname=pdfcrack
+version=0.16
+revision=1
+build_style=gnu-makefile
+short_desc="PDF password recovery tool"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="http://pdfcrack.sourceforge.net/"
+distfiles="${SOURCEFORGE_SITE}/pdfcrack/pdfcrack/pdfcrack-${version}/pdfcrack-${version}.tar.gz"
+checksum=7865b203074ccfd5c612c8ce00c46ffcb4fabaa26154ce9304dfc668c7cb73ef
+
+do_install() {
+	vbin pdfcrack
+}
