@@ -1,0 +1,18 @@
+# Template file for 'SecLists'
+pkgname=SecLists
+version=2019.3
+revision=1
+archs=noarch
+short_desc="Collection of multiple types of lists used during security assessments"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://www.owasp.org/index.php/OWASP_Internet_of_Things_Project"
+distfiles="https://github.com/danielmiessler/SecLists/archive/${version}.tar.gz"
+checksum=d3115fd105450979ce7bbec88544865ac6d9b241a8bae15b5e151536a627259c
+
+do_install() {
+	vlicense LICENSE
+
+	vmkdir usr/share/SecLists
+	vcopy "*" usr/share/SecLists
+}
