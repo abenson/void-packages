@@ -1,0 +1,30 @@
+# Template file for 'cinelerra'
+pkgname=cinelerra
+version=5.1.20180901
+revision=1
+wrksrc="${pkgname}-${version%*.*}"
+build_style=gnu-configure
+configure_args="--disable-static-build --without-commercial --without-thirdparty"
+hostmakedepends="automake cmake nasm yasm pkg-config"
+makedepends="liba52-devel fftw-devel glib-devel glu-devel gtk+-devel ladspa-sdk lame-devel
+ libavc1394-devel libdv-devel libiec61883-devel libnuma-devel
+ libopenexr-devel libraw1394-devel libsndfile-devel libtheora-devel
+ libva-devel libvdpau-devel libvpx-devel libXcomposite-devel
+ libXcursor-devel libXi-devel libXinerama-devel libXrandr-devel libXv-devel
+ opus-devel sord-devel suil-devel twolame-devel ffmpeg-devel x264-devel x265-devel giflib-devel lilv-devel lv2
+ libopenjpeg2-devel MesaLib-devel libwebp-devel"
+depends="dejavu-fonts-ttf inkscape dvdauthor udftools"
+short_desc="Advanced non-linear video editor and compositor"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://cinelerra-cv.org"
+distfiles="https://cinelerra-cv.org/five/pkgs/src/cin_${version}-src.tgz"
+checksum=7ac2860e04e37ee5ce28f5deef2361a2abcf48dccb07f03ae891872d40bef127
+
+export CFLAGS+=" -I${XBPS_CROSS_BASE}/usr/include/a52dec \
+ -I${XBPS_CROSS_BASE}/usr/include/lilv-0                 \
+ -I${XBPS_CROSS_BASE}/usr/include/suil-0"
+
+pre_configure() {
+	./autogen.sh
+}
