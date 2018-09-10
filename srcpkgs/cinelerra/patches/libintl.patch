@@ -1,0 +1,11 @@
+--- cinelerra/Makefile.orig
++++ cinelerra/Makefile
+@@ -431,8 +431,6 @@
+ ifeq ($(WANT_CIN_3RDPARTY),no)
+ LIBS += -lavcodec -lavdevice -lavfilter -lavformat -lavutil
+ LIBS += -lswresample -lswscale
+-LIBS += -lintl -liconv
+-LIBS += -lexecinfo
+ 
+ LIBS += $(shared_libs)
+ LIBS += $(system_libs)

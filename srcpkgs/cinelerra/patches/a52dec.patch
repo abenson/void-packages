@@ -1,0 +1,33 @@
+--- libzmpeg3/Makefile.orig
++++ libzmpeg3/Makefile
+@@ -77,7 +77,7 @@
+ UTILS += $(OBJDIR)/zmpeg3ifochk
+ UTILS += $(OBJDIR)/zmpeg3cc2txt
+ 
+-LIBS = -lm -lpthread
++LIBS = -lm -lpthread -la52
+ 
+ LIBS += $(lib_a52dec) $(lib_djbfft)
+ 
+--- mpeg2enc/Makefile.orig
++++ mpeg2enc/Makefile
+@@ -54,7 +54,7 @@
+ 	$(OBJDIR)/writepic.o
+ 
+ LIBS := $(LIBZMPEG3)/$(OBJDIR)/libzmpeg3.a
+-LIBS += $(libraries) 
++LIBS += $(libraries) -la52
+ 
+ HVEG2LIB = $(OBJDIR)/hveg2enc.a
+ HVEG2ENC = $(OBJDIR)/hveg2enc
+--- mplexlo/Makefile.orig
++++ mplexlo/Makefile
+@@ -11,7 +11,7 @@
+ CFLAGS += $(static_incs)
+ 
+ LIBS := $(LIBZMPEG3)/$(OBJDIR)/libzmpeg3.a
+-LIBS += $(libraries)
++LIBS += $(libraries) -la52
+ 
+ OUTPUT := $(OBJDIR)/mplexlo
+ 
