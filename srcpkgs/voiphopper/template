@@ -1,0 +1,12 @@
+# Template file for 'voiphopper'
+pkgname=voiphopper
+version=2.04
+revision=1
+build_style=gnu-configure
+makedepends="libpcap-devel"
+short_desc="Test security by hopping to the Voice VLAN"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="http://voiphopper.sourceforge.net"
+distfiles="${SOURCEFORGE_SITE}/project/voiphopper/voiphopper-2.0/voiphopper-${version}.tar.gz"
+checksum=ff26b67507b084ec7b53b1690c540a87505cb9bd428a0f78cf535f9707aab109
