@@ -1,0 +1,22 @@
+# Template file for 'Davinci_Resolve'
+pkgname=Davinci_Resolve
+version=16.0b1
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+hostmakedepends="bsdtar unzip"
+short_desc="Color correction and non-linear video editing application"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="Proprietary"
+homepage="https://www.blackmagicdesign.com/products/davinciresolve/"
+distfiles="DaVinci_Resolve_${version}_Linux.zip"
+checksum=7f4517cc08dde962e515ec1bdfbc65b0f1e55368f8d82d31987590e62a6be9c0
+repository=nonfree
+restricted=yes
+nopie=yes
+nostrip=yes
+
+do_install() {
+	mkdir -p "${DESTDIR}/opt/${pkgname}"
+	bsdtar x -f DaVinci_Resolve_${version}_Linux.run -C "${DESTDIR}/opt/${pkgname}"
+}
