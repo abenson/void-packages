@@ -1,0 +1,10 @@
+--- Makefile.orig
++++ Makefile
+@@ -26,6 +26,7 @@
+ 	mkdir -p $(BINDIR)
+ 	rm -f src/*.pyc
+ 	cp -r src/ trelby.desktop names.txt.gz dict_en.dat.gz sample.trelby manual.html fileformat.txt LICENSE README resources $(BINDIR)
++	mkdir -p $(DESKTOPDIR)
+ 	cp trelby.desktop $(DESKTOPDIR)
+ 
+ uninstall:

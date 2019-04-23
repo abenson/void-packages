@@ -1,0 +1,18 @@
+# Template file for 'trelby'
+pkgname=trelby
+version=2.2.0
+revision=1
+build_style=gnu-makefile
+noarch=yes
+hostmakedepends="docbook-xsl libxslt"
+depends="python wxPython python-lxml"
+short_desc="Screenplay writing editor"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0"
+homepage="https://www.trelby.org"
+distfiles="https://github.com/oskusalerma/trelby/archive/${version}.tar.gz"
+checksum=984c98a6016c2d1f63cc2e47a9714bb467309a1c3e5204a8fa21ae5a57bbcd8e
+
+post_install() {
+	vbin ${FILESDIR}/trelby
+}

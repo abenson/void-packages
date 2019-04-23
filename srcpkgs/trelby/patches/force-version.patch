@@ -1,0 +1,11 @@
+--- gen_linux_dist.sh.orig
++++ gen_linux_dist.sh
+@@ -4,7 +4,7 @@
+ 
+ set -eu
+ 
+-VER=$(grep 'version =' src/misc.py | cut -d'"' -f2)
++VER=2.2
+ BASE_DIR="linux-dist/trelby-$VER/"
+ DIR="$BASE_DIR/trelby"
+ 
