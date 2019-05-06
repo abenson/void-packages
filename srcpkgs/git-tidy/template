@@ -1,0 +1,17 @@
+# Template file for 'git-tidy'
+pkgname=git-tidy
+version=1.0.0
+revision=1
+build_style=go
+go_import_path="github.com/drewwyatt/git-tidy"
+hostmakedepends="git"
+short_desc="Delete local git branches"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/drewwyatt/git-tidy"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=5bdae85d8ac4fe59305781846229017a8649d894f82ed9cba243ea1a534bd511
+
+post_install() {
+	vlicense LICENSE
+}
