@@ -1,0 +1,27 @@
+# Template file for 'netclasses'
+pkgname=netclasses
+version=1.06
+revision=1
+build_style=gnu-configure
+hostmakedepends="gnustep-make"
+makedepends="gnustep-base-devel"
+short_desc="Asynchronous networking library for GNUstep"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://sourceforge.net/projects/netclasses/"
+distfiles="${SOURCEFORGE_SITE}/project/netclasses/netclasses/${version}/netclasses-${version}.tar.gz"
+checksum=ad8567b8ed58f0677af75ca4d3dde88a2c43cde9cbd19f9cb2f8b7ffeda2101e
+
+if [ -f /usr/share/GNUstep/Makefiles/GNUstep.sh ]; then
+	. /usr/share/GNUstep/Makefiles/GNUstep.sh
+fi
+
+netclasses-devel_package() {
+	short_desc+=" - developement files"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/GNUstep/Frameworks/netclasses.framework/Versions/1.06/Headers
+		vmove "/usr/lib/*.so"
+	}
+}
