@@ -1,0 +1,24 @@
+https://github.com/coregtk/coregtk/commit/f43c782c58d7805b85b8fdd728a3f14639f18588.patch
+
+From 61c2f63152863c61b9b39be344accc0c3aad6f09 Mon Sep 17 00:00:00 2001
+From: Andrew Benson <abenson@gmail.com>
+Date: Wed, 8 May 2019 21:41:27 -0500
+Subject: [PATCH] gnustep-make: update library version to 3.22
+
+---
+ src/CoreGTK/GNUmakefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CoreGTK/GNUmakefile b/src/CoreGTK/GNUmakefile
+index 3d4d70b..4d7c17b 100644
+--- a/src/CoreGTK/GNUmakefile
++++ b/src/CoreGTK/GNUmakefile
+@@ -1,7 +1,7 @@
+ include $(GNUSTEP_MAKEFILES)/common.make
+ 
+ FRAMEWORK_NAME = CoreGTK
+-VERSION = 3.18.0
++VERSION = 3.22.0
+ 
+ OBJCFLAGS=`pkg-config --cflags gtk+-3.0`
+ LDFLAGS=`pkg-config --libs gtk+-3.0`

@@ -1,0 +1,32 @@
+# Template file for 'coregtk'
+pkgname=coregtk
+version=3.22.0
+revision=1
+build_wrksrc="src/CoreGTK"
+build_style=gnu-makefile
+make_use_env=yes
+hostmakedepends="pkg-config gnustep-make tar"
+makedepends="gnustep-base-devel gtk+3-devel"
+short_desc="Objective-C language binding for the GTK+ widget toolkit"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="LGPL-2.1-or-later"
+homepage="https://github.com/coregtk/coregtk"
+distfiles="${homepage}/archive/v${version}.tar.gz"
+checksum=b5a13b6a26d9cc2b6a765dc5a9fb51182f0375609a13b63473b57243b6a4b276
+patch_args="-Np1"
+
+if [ -e /usr/share/GNUstep/Makefiles/GNUstep.sh ]; then
+	source /usr/share/GNUstep/Makefiles/GNUstep.sh
+fi
+
+coregtk-devel_package() {
+	short_desc+=" - development files"
+	depends="${sourcepkg}>=${version} ${makedepends}"
+	pkg_install() {
+		vmove usr/include
+		vmove "usr/lib/*.so"
+		vmove "usr/lib/GNUstep/Frameworks/CoreGTK.framework/*.so"
+		vmove "usr/lib/GNUstep/Frameworks/CoreGTK.framework/Versions/${version%.*.*}/*.so"
+		vmove "usr/lib/GNUstep/Frameworks/CoreGTK.framework/Versions/${version%.*.*}/Headers"
+	}
+}
