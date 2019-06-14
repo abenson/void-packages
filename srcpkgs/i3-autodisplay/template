@@ -1,0 +1,14 @@
+# Template file for 'i3-autodisplay'
+pkgname=i3-autodisplay
+version=0.1
+revision=1
+build_style=go
+go_import_path="github.com/lpicanco/i3-autodisplay"
+hostmakedepends="git"
+depends="xrandr"
+short_desc="Automatic display configuration for i3m"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/lpicanco/i3-autodisplay"
+distfiles="${homepage}/archive/v${version}.tar.gz"
+checksum=7fb96d909e541ddcfb73afda56caaab3a4c0fd1bffcd46757890a862230b6ad5
