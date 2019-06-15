@@ -1,0 +1,13 @@
+# Template file for 'pal'
+pkgname=pal
+version=0.4.2
+revision=1
+build_style=gnu-makefile
+hostmakedepends="pkg-config"
+makedepends="gettext-devel readline-devel glib-devel"
+short_desc="Command-line calendar program"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="http://palcal.sourceforge.net"
+distfiles="${SOURCEFORGE_SITE}/palcal/pal-${version}.tgz"
+checksum=dd061144ba55835c34c44ed0a92f15bd0219818a73a597ee3a95e97eb5b60198
