@@ -1,0 +1,17 @@
+# Template file for 'sslscan'
+pkgname=sslscan
+version=0.8.2
+revision=1
+build_style=gnu-makefile
+make_use_env=yes
+short_desc="Fast SSL Scanner"
+maintainer="Andrew Benson <abenson@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://sourceforge.net/projects/sslscan/"
+distfiles="$SOURCEFORGE_SITE/sslscan/sslscan/sslscan-${version}.tgz"
+checksum=badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb
+
+do_install() {
+	vbin sslscan
+	vman sslscan.1
+}
