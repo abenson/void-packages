@@ -1,0 +1,27 @@
+https://patch-diff.githubusercontent.com/raw/vilcans/screenplain/pull/49.patch
+
+From 9fa1d2fc29e85406143cd253ea280bddcdbf9ad1 Mon Sep 17 00:00:00 2001
+From: Andrew Benson <abenson@gmail.com>
+Date: Thu, 25 Apr 2019 18:40:40 -0500
+Subject: [PATCH] export/pdf: use left aligned contact information.
+
+Closes #48.
+
+See also #40.
+---
+ screenplain/export/pdf.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/screenplain/export/pdf.py b/screenplain/export/pdf.py
+index 6955616..c04d400 100644
+--- a/screenplain/export/pdf.py
++++ b/screenplain/export/pdf.py
+@@ -105,8 +105,6 @@
+ )
+ contact_style = ParagraphStyle(
+     'contact', default_style,
+-    leftIndent=3.9 * inch,
+-    rightIndent=0,
+ )
+ 
+ 
