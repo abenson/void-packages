@@ -1,0 +1,29 @@
+--- src/ap/hw_features.c       2019-04-21 09:10:22.000000000 +0200
++++ src/ap/hw_features.c    2019-06-25 08:32:00.555631536 +0200
+@@ -316,7 +316,7 @@
+                           iface->conf->channel,
+                           iface->conf->channel +
+                           iface->conf->secondary_channel * 4);
+-               iface->conf->secondary_channel = 0;
++//             iface->conf->secondary_channel = 0;
+                if (iface->drv_flags & WPA_DRIVER_FLAGS_HT_2040_COEX) {
+                        /*
+                         * TODO: Could consider scheduling another scan to check
+--- src/ap/ieee802_11_ht.c     2019-04-21 09:10:22.000000000 +0200
++++ src/ap/ieee802_11_ht.c  2019-06-25 08:38:51.760302846 +0200
+@@ -349,7 +349,7 @@
+        wpa_printf(MSG_DEBUG, "is_ht40_allowed=%d num_sta_ht40_intolerant=%d",
+                   is_ht40_allowed, iface->num_sta_ht40_intolerant);
+ 
+-       if (!is_ht40_allowed &&
++/*     if (!is_ht40_allowed &&
+            (iface->drv_flags & WPA_DRIVER_FLAGS_HT_2040_COEX)) {
+                if (iface->conf->secondary_channel) {
+                        hostapd_logger(hapd, mgmt->sa,
+@@ -372,7 +372,7 @@
+                                   "Reschedule HT 20/40 timeout to occur in %u seconds",
+                                   delay_time);
+                }
+-       }
++       } */
+ }
