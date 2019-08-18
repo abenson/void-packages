@@ -1,6 +1,6 @@
 # Template file for 'NetAuth'
 pkgname=NetAuth
-version=0.1.0
+version=0.1.2
 revision=1
 build_style="go"
 go_import_path="github.com/NetAuth/NetAuth"
@@ -12,7 +12,7 @@ maintainer="Michael Aldridge <maldridge@voidlinux.org>"
 license="MIT"
 homepage="https://netauth.org"
 distfiles="https://github.com/NetAuth/NetAuth/archive/v$version.tar.gz"
-checksum=3521516de7e342199ebc564614f0b5f93119b2fcbf603c186cd2c7f20cb18874
+checksum=ad58eac2bd24a3885941e4746c24a171f4b6279eaead8a61dda7b9d6fbe7f022
 
 do_check() {
 	go test -v ./...
