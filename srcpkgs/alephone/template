@@ -1,0 +1,19 @@
+# Template file for 'alephone'
+pkgname=alephone
+version=20190331
+revision=1
+wrksrc="${pkgname}-release-${version}"
+build_style=gnu-configure
+hostmakedepends="automake pkg-config"
+makedepends="boost-devel SDL2-devel SDL2_ttf-devel SDL2_net-devel"
+short_desc="Open source continuation of Bungie’s Marathon 2 engine"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://alephone.lhowon.org/"
+distfiles="https://github.com/Aleph-One-Marathon/alephone/archive/release-${version}.tar.gz"
+checksum=eee993933d7c24c4dbf8caf5a0fc41ec98cbff31c9f99564de2781030a0ec2f2
+nocross="boost or something"
+
+pre_configure() {
+	NO_CONFIGURE=1 ./autogen.sh
+}
