@@ -1539,7 +1539,6 @@ libdovecot-storage.so.0 dovecot-2.2.11_2
 libdovecot-lda.so.0 dovecot-2.2.11_2
 libnetapi.so.0 samba-3.6.23_1
 libsmbsharemodes.so.0 samba-3.6.23_1
-libmysqld.so.18 libmariadbclient-5.5.36_1
 libwscodecs.so.2 libwireshark-2.6.2_1
 libwiretap.so.9 libwireshark-3.0.0_1
 libwireshark.so.12 libwireshark-3.0.0_1
@@ -3509,3 +3508,5 @@ libdrumstick-file.so.1 drumstick-1.1.2_1
 libdrumstick-alsa.so.1 drumstick-1.1.2_1
 libdrumstick-rt.so.1 drumstick-1.1.2_1
 libnozzle.so.1 libnozzle1-1.11_2
+libmariadb.so.3 libmariadbclient-10.4.7_6
+libmariadbd.so.19 mariadb-10.4.7_6

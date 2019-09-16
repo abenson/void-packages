@@ -1,17 +1,17 @@
---- ./CMakeLists.txt.orig	2015-09-17 15:47:59.794784111 -0400
-+++ ./CMakeLists.txt	2015-09-19 19:42:16.751348473 -0400
-@@ -362,10 +376,10 @@
- 
- CHECK_PCRE()
- 
--IF(CMAKE_CROSSCOMPILING)
--  SET(IMPORT_EXECUTABLES "IMPORTFILE-NOTFOUND" CACHE FILEPATH "Path to import_executables.cmake from a native build")
--  INCLUDE(${IMPORT_EXECUTABLES})
--ENDIF()
-+# IF(CMAKE_CROSSCOMPILING)
-+#   SET(IMPORT_EXECUTABLES "IMPORTFILE-NOTFOUND" CACHE FILEPATH "Path to import_executables.cmake from a native build")
-+#   INCLUDE(${IMPORT_EXECUTABLES})
-+# ENDIF()
- 
- #
- # Setup maintainer mode options. Platform checks are
+https://git.alpinelinux.org/aports/plain/main/mariadb/pcre.cmake.patch
+
+--- cmake/pcre.cmake
++++ cmake/pcre.cmake
+@@ -8,11 +8,7 @@
+     CHECK_LIBRARY_EXISTS(pcre pcre_stack_guard "" HAVE_PCRE_STACK_GUARD)
+     IF(NOT CMAKE_CROSSCOMPILING)
+       SET(CMAKE_REQUIRED_LIBRARIES "pcre")
+-      CHECK_C_SOURCE_RUNS("
+-        #include <pcre.h>
+-        int main() {
+-        return -pcre_exec(NULL, NULL, NULL, -999, -999, 0, NULL, 0) < 256;
+-        }"  PCRE_STACK_SIZE_OK)
++      SET(PCRE_STACK_SIZE_OK TRUE)
+       SET(CMAKE_REQUIRED_LIBRARIES)
+     ENDIF()
+   ENDIF()
