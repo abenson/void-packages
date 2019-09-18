@@ -1,0 +1,24 @@
+# Template file for 'lynis'
+pkgname=lynis
+version=2.7.5
+revision=1
+archs=noarch
+depends="virtual?awk iptables bind-utils"
+short_desc="Security and system auditing tool to harden Unix/Linux systems"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-only"
+homepage="https://cisofy.com/lynis/"
+distfiles="https://github.com/CISOfy/lynis/archive/${version}.tar.gz"
+checksum=7a81c1e9ad757b264273bb6a5e1bbd9878ad74055bfa99b4bda4efb12a27e34a
+
+do_install() {
+	vbin lynis
+	vman lynis.8
+	vmkdir usr/share/$pkgname
+	vcopy include usr/share/$pkgname
+	vdoc README
+	vdoc FAQ
+	vmkdir usr/share/bash-completion/completions
+	vcopy extras/bash_completion.d/$pkgname usr/share/bash-completion/completions
+	vsconf default.prf
+}
