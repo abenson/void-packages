@@ -1,0 +1,16 @@
+# Template file for 'python3-mssql'
+pkgname=python3-mssql
+version=2.1.4
+revision=1
+wrksrc="pymssql-${version}"
+build_style=python3-module
+pycompile_module="pymssql"
+hostmakedepends="python3-setuptools python3-Cython"
+makedepends="freetds-devel python3-devel"
+depends="python3"
+short_desc="DB-API interface to Microsoft SQL Server"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="LGPL-2.1-or-later"
+homepage="http://pymssql.org"
+distfiles="https://github.com/pymssql/pymssql/archive/${version}.tar.gz"
+checksum=97b8ab6cdf7900891d5d372a57b5b7c0ca60b5cf291022431b9aa3e94346a33e
