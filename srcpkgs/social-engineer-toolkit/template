@@ -1,0 +1,29 @@
+# Template file for 'social-engineer-toolkit'
+pkgname=social-engineer-toolkit
+version=8.0.1
+revision=1
+archs=noarch
+pycompile_dirs="usr/share/$pkgname"
+depends="python3-pexpect python3-pycryptodome python3-requests python3-openssl
+ python3-pefile python3-qrcode python3-Pillow python3-impacket python3-mssql"
+short_desc="Penetration testing framework designed for social engineering"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://www.trustedsec.com/social-engineer-toolkit-set/"
+distfiles="https://github.com/trustedsec/social-engineer-toolkit/archive/${version}.tar.gz"
+checksum=23a4fe1de24b746f18aa0790f14ddda7d4d70b95071abbd3ae8cedf36268367b
+python_version="3"
+
+do_install() {
+	vmkdir usr/share/${pkgname}
+	for file in modules src seautomate seproxy setoolkit ; do
+		vcopy $file usr/share/${pkgname}
+	done
+
+	vmkdir usr/bin
+	for file in seautomate seproxy setoolkit; do
+		ln -sf /usr/share/$file ${DESTDIR}/usr/bin/$file
+	done
+
+	vlicense readme/LICENSE
+}
