@@ -1,0 +1,22 @@
+# Template file for 'WhatWeb'
+pkgname=WhatWeb
+version=0.5.1
+revision=1
+archs=noarch
+depends="ruby-ipaddr ruby-addressable ruby-json"
+short_desc="Next generation web scanner"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://www.morningstarsecurity.com/research/whatweb"
+distfiles="https://github.com/urbanadventurer/WhatWeb/archive/v${version}.tar.gz"
+checksum=0d95c6a0a11ab19f8683e7f22702b9440ebdcdad3598201a34aeb1a2a2e07a82
+
+do_install() {
+	vman whatweb.1
+	vmkdir usr/share/whatweb
+	for dir in whatweb my-plugins plugins-disabled plugins lib plugin-development addons; do
+		vcopy $dir usr/share/whatweb
+	done
+	vmkdir usr/bin
+	ln -sf /usr/share/whatweb/whatweb $DESTDIR/usr/bin/whatweb
+}
