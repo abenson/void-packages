@@ -1,0 +1,12 @@
+# Template file for 'httprobe'
+pkgname=httprobe
+version=0.1.2
+revision=1
+build_style=go
+go_import_path="github.com/tomnomnom/httprobe"
+short_desc="Probe for working HTTP and HTTPS servers"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/tomnomnom/httprobe"
+distfiles="${homepage}/archive/v${version}.tar.gz"
+checksum=3e422617d8db3c343c2360cda6c1010bf00d615bf33857dee94429dc44a2594f
