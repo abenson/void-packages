@@ -1,0 +1,19 @@
+# Template file for 'ruby-ipaddr'
+pkgname=ruby-ipaddr
+version=1.2.2
+revision=1
+archs=noarch
+wrksrc="ipaddr-${version}"
+build_style=gemspec
+hostmakedepends="ruby"
+short_desc="Class to manipulate an IP address"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="BSD-2-Clause"
+homepage="https://github.com/ruby/ipaddr"
+distfiles="${homepage}/archive/v${version}.tar.gz"
+checksum=9da92c609efa0c489e9b1d71ec2554b3708afb7f3f0b6635818c7d6eb2def2b6
+
+post_install() {
+	rm -rf $DESTDIR/usr/bin
+	vlicense LICENSE.txt
+}
