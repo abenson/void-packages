@@ -1,0 +1,24 @@
+# Template file for 'LibreSprite'
+pkgname=LibreSprite
+version=1.1.7
+revision=1
+build_style=cmake
+configure_args="-DUSE_SHARED_ALLEGRO4=ON -DUSE_SHARED_CURL=ON
+ -DUSE_SHARED_GIFLIB=ON -DUSE_SHARED_JPEGLIB=on -DUSE_SHARED_LIBLOADPNG=ON
+ -DUSE_SHARED_LIBWEBP=ON -DUSE_SHARED_TINYXML=ON -DUSE_SHARED_PIXMAN=ON
+ -DUSE_SHARED_FREETYPE=ON"
+hostmakedepends="git ninja"
+makedepends="libX11-devel libXcursor-devel gtest-devel allegro4-devel 
+ libcurl-devel libjpeg-turbo-devel zlib-devel libpng-devel libwebp-devel
+ tinyxml-devel pixman-devel freetype-devel giflib-devel"
+short_desc="Animated sprite editor & pixel art tool"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-only"
+homepage="https://github.com/LibreSprite/LibreSprite"
+distfiles="${homepage}/archive/v${version}.tar.gz"
+checksum=0ad9922d8c8fd4d40b500612b37b1c192d2058c8e7e873378ef6cf54583cf274
+
+
+do_build() {
+	cd build && ninja libresprite
+}	
