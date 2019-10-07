@@ -1,0 +1,16 @@
+# Template file for 'Stacer'
+pkgname=Stacer
+version=1.1.0
+revision=1
+build_style=cmake
+hostmakedepends="qt5-host-tools"
+makedepends="qt5-tools-devel qt5-svg-devel qt5-charts-devel"
+depends="curl"
+short_desc="System Optimizer and Monitoring"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://oguzhaninan.github.io/Stacer-Web"
+distfiles="https://github.com/oguzhaninan/Stacer/archive/v${version}.tar.gz"
+checksum=6b4922c02017ab4b65c7853db31e24a6969051b3eb06ebd9820df897d857bd31
+
+export LD="${XBPS_HOST_CC}"
