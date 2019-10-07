@@ -1,0 +1,16 @@
+# Template file for 'corectrl'
+pkgname=corectrl
+version=1.0.6
+revision=1
+build_style=cmake
+wrksrc="$pkgname-v$version"
+hostmakedepends="qt5-host-tools extra-cmake-modules pkg-config"
+makedepends="qt5-devel qt5-declarative-devel qt5-charts-devel qt5-tools-devel
+ kauth-devel karchive-devel botan-devel"
+dedends="procps-ng hwids Vulkan-Tools qt5-quickcontrols2"
+short_desc="Core system hardware control application"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://gitlab.com/corectrl/corectrl"
+distfiles="${homepage}/-/archive/v${version}/corectrl-v${version}.tar.bz2"
+checksum=5f6c521db64a95563bce7bc9c7909310d3991ef9683cc9bf175628c9ebdb5ffc
