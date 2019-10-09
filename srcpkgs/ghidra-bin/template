@@ -1,0 +1,23 @@
+# Template file for 'ghidra-bin'
+pkgname=ghidra-bin
+version=9.1
+revision=1
+_reldate=20190923
+wrksrc="ghidra_${version}-BETA_DEV"
+hostmakedepends="unzip"
+depends="virtual?java-runtime"
+short_desc="Software reverse engineering (SRE) suite"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="Apache-2.0"
+homepage="https://ghidra-sre.org"
+distfiles="${homepage}/ghidra_${version}-BETA_DEV_${_reldate}.zip"
+checksum=3d61de711b7ea18bdee3ed94c31429e4946603b3e7d082cca5e949bbd651f051
+nostrip=yes
+nopie=yes
+
+do_install() {
+	vmkdir usr/libexec/ghidra
+	vcopy ./ usr/libexec/ghidra
+	vmkdir usr/bin
+	ln -sf /usr/libexec/ghidra/ghidraRun ${DESTDIR}/usr/bin/ghidra
+}
