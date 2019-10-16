@@ -1,0 +1,30 @@
+# Template file for 'tor-browser-bin'
+pkgname=tor-browser-bin
+version=8.5.5
+revision=1
+wrksrc="tor-browser_en-US"
+archs="i686 x86_64"
+short_desc="Tor Browser is +1 for privacy and -1 for mass surveillance"
+maintainer="Andrew Benson <abenson@gmail.com>"
+license="MPL-2.0"
+homepage="https://www.torproject.org/"
+nopie=yes
+nostrip=yes
+
+case $XBPS_ARCH in
+	x86_64)
+		distfiles="https://dist.torproject.org/torbrowser/${version}/tor-browser-linux64-${version}_en-US.tar.xz"
+		checksum=5f334f14161952476adde3fbd843f93f647d47a0d7e30eb5d1635fb7569a2503
+		;;
+	i686)
+		distfiles="https://dist.torproject.org/torbrowser/${version}/tor-browser-linux32-${version}_en-US.tar.xz"
+		checksum=49b84482a6c27971aa9b2421a5e2967c3382b4566610ab8a25d9bd1767e1bbdb
+		;;
+esac
+
+do_install() {
+	vmkdir usr/libexec/tor-browser
+	vcopy Browser usr/libexec/tor-browser
+	vmkdir usr/bin
+	ln -sf /usr/libexec/tor-browser/Browser/start-tor-browser ${DESTDIR}/usr/bin/tor-browser
+}
