@@ -1,7 +1,7 @@
 # Template file for 'Vulkan-ValidationLayers'
 pkgname=Vulkan-ValidationLayers
-version=1.1.112
-revision=2
+version=1.1.126
+revision=1
 build_style=cmake
 configure_args="-DGLSLANG_INSTALL_DIR=/usr
  -DVULKAN_HEADERS_INSTALL_DIR=${XBPS_CROSS_BASE}/usr"
@@ -13,4 +13,4 @@ maintainer="Colin Gillespie <colin@breavyn.com>"
 license="Apache-2.0"
 homepage="https://www.khronos.org/vulkan/"
 distfiles="https://github.com/KhronosGroup/${pkgname}/archive/v${version}.tar.gz"
-checksum=6ba1a0d8082975b4ac39ae01be5e1d5e722247a14a8ac20ce0e9d21a09bfc268
+checksum=bd5adecbdbd0cf6dcf87cdcf9c53239ef8de01266a431ead3fa0bd5c55bdeef0
