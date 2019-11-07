@@ -1,0 +1,27 @@
+# Template file for 'nvidia-detect'
+pkgname=nvidia-detect
+version=430.34
+revision=1
+_gitver=49c861463173fd6501058db010cd6ca5693e119b
+archs="i686 x86_64"
+create_wrksrc=yes
+build_style=fetch
+makedepends="pciutils-devel"
+short_desc="Utility to detect NVIDIA graphics cards"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://www.nvidia.com/"
+distfiles="https://raw.githubusercontent.com/elrepo/packages/${_gitver}/nvidia-detect/Makefile
+ https://raw.githubusercontent.com/elrepo/packages/${_gitver}/nvidia-detect/nvidia-detect.c
+ https://raw.githubusercontent.com/elrepo/packages/${_gitver}/nvidia-detect/nvidia-detect.h
+ https://raw.githubusercontent.com/elrepo/packages/${_gitver}/nvidia-detect/nvidia-detect_x86.h"
+checksum="3bf19a3a953756bd35baceeb7ad385aba64fa2b52dcc3de71dd678f592bb0b3a
+ 2426dec31eaaadb35c37753fe97125b5eec1607183574b232be3026b7ff7fb99
+ 6668b652e6ae127df7754616cd7af566b3faade77415ee53e62908ada27ecbd2
+ fe3270dd4c5093dd2f7105541a6e3451f980aee9d8b38ecbbadabcce3185271a"
+
+do_install() {
+	patch -p0 < $FILESDIR/void-pkg-names.patch
+	make
+	vbin nvidia-detect
+}

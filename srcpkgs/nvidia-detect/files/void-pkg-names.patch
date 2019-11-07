@@ -1,0 +1,38 @@
+--- nvidia-detect.c.orig
++++ nvidia-detect.c
+@@ -43,32 +43,13 @@
+ #define PCI_VENDOR_ID_NVIDIA	0x10de
+ #endif
+ 
+-/* Only recommend elrepo drivers on RHEL*/
+-#if RHEL_MAJOR == 7
+-#define KMOD_NVIDIA			"kmod-nvidia"
+-#define KMOD_NVIDIA_390XX	"kmod-nvidia-390xx"
+-#define KMOD_NVIDIA_367XX	""	/* No longer supported on RHEL */
+-#define KMOD_NVIDIA_340XX	"kmod-nvidia-340xx"
+-#define KMOD_NVIDIA_304XX	""	/* No longer supported on RHEL */
+-#define KMOD_NVIDIA_173XX	""	/* No longer supported on RHEL */
+-#define KMOD_NVIDIA_96XX	""	/* No longer supported on RHEL */
+-#elif RHEL_MAJOR == 6
+-#define KMOD_NVIDIA			"kmod-nvidia"
+-#define KMOD_NVIDIA_390XX	"kmod-nvidia-390xx"
+-#define KMOD_NVIDIA_367XX	""	/* No longer supported on RHEL */
+-#define KMOD_NVIDIA_340XX	"kmod-nvidia-340xx"
+-#define KMOD_NVIDIA_304XX	"kmod-nvidia-304xx"
+-#define KMOD_NVIDIA_173XX	""	/* No longer supported on RHEL */
+-#define KMOD_NVIDIA_96XX	""	/* No longer supported on RHEL */
+-#else	/* make no specific package recommendation */
+-#define KMOD_NVIDIA		""
+-#define KMOD_NVIDIA_390XX	""
++#define KMOD_NVIDIA		"nvidia"
++#define KMOD_NVIDIA_390XX	"nvidia390"
+ #define KMOD_NVIDIA_367XX	""
+-#define KMOD_NVIDIA_340XX	""
++#define KMOD_NVIDIA_340XX	"nvidia340"
+ #define KMOD_NVIDIA_304XX	""
+ #define KMOD_NVIDIA_173XX	""
+ #define KMOD_NVIDIA_96XX	""
+-#endif
+ 
+ /* 
+  * Define the max Xorg Video Driver ABI supported by each NVIDIA driver
