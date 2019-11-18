@@ -1,0 +1,24 @@
+--- capture/reader-libpcap.c.orig
++++ capture/reader-libpcap.c
+@@ -94,7 +94,8 @@
+     int dlt_to_linktype(int dlt);
+ 
+     //ALW - Bug: assumes all linktypes are the same
+-    moloch_packet_set_linksnap(dlt_to_linktype(pcap_datalink(pcaps[0])) | pcap_datalink_ext(pcaps[0]), pcap_snapshot(pcaps[0]));
++    //moloch_packet_set_linksnap(dlt_to_linktype(pcap_datalink(pcaps[0])) | pcap_datalink_ext(pcaps[0]), pcap_snapshot(pcaps[0]));
++    moloch_packet_set_linksnap(pcap_datalink(pcaps[0]), pcap_snapshot(pcaps[0]));
+ 
+     int i;
+     for (i = 0; i < MAX_INTERFACES && config.interface[i]; i++) {
+--- capture/reader-libpcap-file.c.orig
++++ capture/reader-libpcap-file.c
+@@ -557,7 +557,8 @@
+     if (config.flushBetween)
+         moloch_session_flush();
+ 
+-    moloch_packet_set_linksnap(dlt_to_linktype(pcap_datalink(pcap)) | pcap_datalink_ext(pcap), pcap_snapshot(pcap));
++    //moloch_packet_set_linksnap(dlt_to_linktype(pcap_datalink(pcap)) | pcap_datalink_ext(pcap), pcap_snapshot(pcap));
++    moloch_packet_set_linksnap(pcap_datalink(pcap), pcap_snapshot(pcap));
+ 
+     offlineFile = pcap_file(pcap);
+ 

@@ -1,0 +1,20 @@
+# Template file for 'moloch'
+pkgname=moloch
+version=2.0.1
+revision=1
+build_style=gnu-configure
+hostmakedepends="pkg-config libtool automake nodejs"
+makedepends="pcre-devel zlib-devel libressl-devel e2fsprogs-devel file-devel
+ libuuid-devel bzip2-devel libpng-devel readline-devel libffi-devel
+ libyaml-devel liblzma-devel libpcap-devel yara-devel libmaxminddb-devel
+ glib-devel libcurl-devel"
+short_desc="Large scale, full packet capturing, indexing, and database system"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="Apache-2.0"
+homepage="http://molo.ch"
+distfiles="https://github.com/aol/moloch/archive/v${version}.tar.gz"
+checksum=1dc035b1042bc50beebc0827ce702a2ff102e2498426616654776734bfae4925
+
+pre_configure() {
+	autoreconf
+}
