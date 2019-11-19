@@ -1,0 +1,11 @@
+# Template file for 'xcp'
+pkgname=xcp
+version=0.6.0
+revision=1
+build_style=cargo
+short_desc="Extended cp"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-only"
+homepage="https://github.com/tarka/xcp"
+distfiles="https://github.com/tarka/xcp/archive/v${version}.tar.gz"
+checksum=bbf664f91811bab4b9d03c2d87fadd5b7e1078a519f51aaf3a63ca2120837d25
