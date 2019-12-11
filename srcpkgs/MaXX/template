@@ -1,0 +1,28 @@
+# Template file for 'MaXX'
+pkgname=MaXX
+version=2.0.1
+revision=1
+wrksrc="MaXX"
+archs="x86_64"
+hostmakedepends=""
+makedepends=""
+depends=""
+short_desc="MaXX Interactive Desktop"
+maintainer="Andrew Benson <abenson@gmail.com>"
+license="custom: Proprietary"
+homepage="https://www.facebook.com/maxxdesktop/"
+distfiles="https://maxxdesktop.arcadedaydream.com/Indigo-Releases/Installers/MaXX-Indigo-${version}-x86_64.tar.gz"
+checksum=01c86bcc576d951b5d339958bf5725dcc2fa8d8da718e7e1de758e73901c0d9e
+nonfree=yes
+nopies=yes
+nostrip=yes
+
+do_install() {
+	vmkdir opt
+	cp -R $wrksrc $DESTDIR/opt/
+	vmkdir usr/share/icons
+	ln -sf /opt/MaXX/share/icons/* $DESTDIR/usr/share/icons
+	vmkdir usr/share/xsessions
+	ln -sf /opt/MaXX/share/xsessions/maxx.desktop $DESTDIR/usr/share/xsessions/
+	ln -sf /usr/lib64/libncurses.so.5 $DESTDIR/opt/MaXX/lib64/libtinfo.so.5
+}
