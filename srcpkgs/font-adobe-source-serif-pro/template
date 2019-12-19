@@ -1,0 +1,20 @@
+# Template file for 'font-adobe-source-serif-pro'
+pkgname=font-adobe-source-serif-pro
+version=3.001R
+revision=1
+archs=noarch
+wrksrc="source-serif-pro-${version}"
+depends="font-util"
+short_desc="Monospaced font family for user interface and coding environments"
+maintainer="Piero La Terza <platerza@protonmail.com>"
+license="OFL-1.1"
+homepage="https://adobe-fonts.github.io/source-serif-pro/"
+distfiles="https://github.com/adobe-fonts/source-serif-pro/archive/${version}.tar.gz"
+checksum=84e08c9e870081e0fcda4d83b02e06a4a7f35e52f96491a2246eca8b82fc8a53
+font_dirs="/usr/share/fonts/OTF/"
+
+do_install() {
+	for i in ${wrksrc}/OTF/*.otf; do
+		vinstall $i 644 usr/share/fonts/OTF/
+	done
+}
