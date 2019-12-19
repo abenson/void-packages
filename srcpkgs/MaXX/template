@@ -1,0 +1,27 @@
+# Template file for 'MaXX'
+pkgname=MaXX
+version=2.0.1
+revision=1
+create_wrksrc=yes
+archs="x86_64"
+depends="xorg-fonts dejavu-fonts-ttf pavucontrol ncurses-libs"
+short_desc="Reimplementation of the SGI Irix 4dwm desktop"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="custom:Proprietary"
+homepage="https://maxxdesktop.arcadedaydream.com/Indigo-Releases/"
+distfiles="${homepage}/Installers/MaXX-Indigo-${version}-x86_64.tar.gz"
+checksum=01c86bcc576d951b5d339958bf5725dcc2fa8d8da718e7e1de758e73901c0d9e
+nopie=yes
+nostrip=yes
+restricted=yes
+nonfree=yes
+
+do_install() {
+	vmkdir opt
+	vcopy MaXX opt
+	vmkdir usr/share/icons
+	ln -sf /opt/MaXX/share/icons/* ${DESTDIR}/usr/share/icons
+	vmkdir usr/share/xsessions
+	ln -sf /opt/MaXX/share/xsessions/maxx.desktop ${DESTDIR}/usr/share/xsessions/maxx.desktop
+	ln -sf /usr/lib/libncursesw.so.5 ${DESTDIR}/opt/MaXX/lib64/libtinfo.so.5
+}
