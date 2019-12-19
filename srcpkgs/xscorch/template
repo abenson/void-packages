@@ -1,0 +1,13 @@
+# Template file for 'xscorch'
+pkgname=xscorch
+version=0.2.1
+revision=1
+build_style=gnu-configure
+hostmakedepends="perl pkg-config"
+makedepends="gtk+-devel libmikmod-devel"
+short_desc="Clone of the classic DOS game Scorched Earth"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-only"
+homepage="http://www.xscorch.org/"
+distfiles="http://www.xscorch.org/releases/xscorch-${version}.tar.gz"
+checksum=a315f7001a020c6b8f644db1c1dc56ccfbb9e3efcbf12c41ac9eb4e5e75cb5f7
