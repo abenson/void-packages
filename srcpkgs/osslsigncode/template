@@ -1,0 +1,19 @@
+# Template file for 'osslsigncode'
+pkgname=osslsigncode
+version=0.0.2017.06.19
+revision=1
+_gitver=792e76ef0e793122c7e2a9af577f587efdd6d9ea
+wrksrc="${pkgname}-${_gitver}"
+build_style=gnu-configure
+hostmakedepends="pkg-config automake libtool"
+makedepends="libressl-devel libcurl-devel"
+short_desc="Authenticode signing and timestamping"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/develar/osslsigncode"
+distfiles="${homepage}/archive/${_gitver}.tar.gz"
+checksum=2e04b3ee6c9bad71e5ff2618434ed913e8b7c4732d52fccadd28dc8482cf500f
+
+pre_configure() {
+	./autogen.sh
+}
