@@ -1,0 +1,24 @@
+# Template file for 'fiflo'
+pkgname=fiflo
+version=4.1.0
+revision=1
+wrksrc="${pkgname}-v${version}"
+build_style=gnu-makefile
+short_desc="Text editor with Windows keyboard shortcuts"
+maintainer="Andrewb Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://gitlab.com/mattmaniak/fiflo"
+distfiles="${homepage}/-/archive/v${version}/fiflo-v${version}.tar.bz2"
+checksum=63996abf4f90330f2aaca24038b0421007bdb992b2dce3c65f730e260038e5e8
+
+do_install() {
+	vbin bin/fiflo
+	vman man/fiflo.1
+	vman man/fiflorc.5
+	vconf fiflorc
+	vmkdir usr/share/doc/fiflo
+	vcopy "doc/*" usr/share/doc/fiflo
+	vmkdir usr/share/fiflo
+	vcopy "syntax/*" usr/share/fiflo
+	vlicense LICENSE
+}
