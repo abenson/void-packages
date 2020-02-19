@@ -1,0 +1,18 @@
+# Template file for 'utfcpp1'
+pkgname=utfcpp1
+version=1.03
+revision=1
+archs=noarch
+create_wrksrc=yes
+hostmakedepends="unzip"
+short_desc="C++ Library to handle UTF-8 in a Portable way"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="http://utfcpp.sourceforge.net/"
+distfiles="${SOURCEFORGE_SITE}/utfcpp/utf8cpp_1x/v${version}/utf8cpp_v${version//./_}.zip"
+checksum=3f895a7eb7b093ce52a345aab0dfb4a36d80a4bd7cd124544bf87cf5c10d598f
+
+do_install() {
+	vmkdir usr/include
+	vcopy source/utf8.h usr/include/
+}
