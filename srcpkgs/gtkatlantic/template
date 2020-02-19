@@ -1,0 +1,13 @@
+# Template file for 'gtkatlantic'
+pkgname=gtkatlantic
+version=0.6.2
+revision=1
+build_style=gnu-configure
+hostmakedepends="pkg-config"
+makedepends="gtk+3-devel"
+short_desc="Network client for monopd"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://gtkatlantic.gradator.net/"
+distfiles="http://download.tuxfamily.org/gtkatlantic/downloads/v${version%.*}/gtkatlantic-${version}.tar.bz2"
+checksum=2c4814e13b17747da9e656d2111ebbf775e948dcd587b463fe1e0a5c65735776
