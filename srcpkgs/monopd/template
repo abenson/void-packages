@@ -1,0 +1,19 @@
+# Template file for 'monopd'
+pkgname=monopd
+version=0.10.0
+revision=1
+build_style=gnu-configure
+hostmakedepends="pkg-config"
+makedepends="muparser-devel utfcpp1"
+short_desc="Dedicated game server for Monopoly-like board games"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-only"
+homepage="https://gtkatlantic.gradator.net/"
+distfiles="http://download.tuxfamily.org/gtkatlantic/monopd/monopd-${version}.tar.gz"
+checksum=effda74bad6fd9a1f75147160436dcd0e69b55c4d76c20161a530b6e08c51e6e
+conf_files="/etc/monopd.conf"
+
+post_install() {
+	mv ${DESTDIR}/etc/monopd.conf-dist ${DESTDIR}/etc/monopd.conf
+	vsv monopd
+}
