@@ -1,0 +1,15 @@
+# Template file for 'volatility3'
+pkgname=volatility3
+version=0.0.2019.02.15
+revision=1
+build_style=python3-module
+_gitver=3a824b519e589075f7269a8e6869ec2fcd71fdf3
+wrksrc="${pkgname}-${_gitver}"
+hostmakedepends="python3-setuptools"
+depends="python3 python3-pefile"
+short_desc="Advanced memory forensics framework"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="VSL-1.0-or-later"
+homepage="http://volatilityfoundation.org/"
+distfiles="https://github.com/volatilityfoundation/volatility3/archive/${_gitver}.tar.gz"
+checksum=c7a93bc0a540ae29f824524bef7b28e73a78278a0953bee054d8f48b2afbff83
