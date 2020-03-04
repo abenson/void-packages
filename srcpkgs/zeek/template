@@ -1,29 +1,30 @@
-# Template file for 'bro'
-pkgname=bro
-version=2.6.4
+# Template file for 'zeek'
+pkgname=zeek
+version=3.1.0
 revision=1
 archs="x86_64* i686* aarch64* armv7* ppc64*"
 build_style=cmake
 hostmakedepends="flex pkg-config python3"
-makedepends="bind-devel geoip-devel libpcap-devel libressl-devel jemalloc-devel"
+makedepends="bind-devel geoip-devel libpcap-devel libressl-devel jemalloc-devel
+ libkqueue-devel"
 short_desc="Advanced framework for network traffic analysis"
 maintainer="Andrew Benson <abenson+void@gmail.com>"
 license="BSD-3-Clause"
-homepage="https://www.bro.org"
-distfiles="https://www.bro.org/downloads/bro-${version}.tar.gz"
-checksum=a47a9cdcef0ea14d5f70c390ab266f0333063ff96f3869a5f1609581a1d1ceb7
+homepage="https://www.zeek.org"
+distfiles="https://www.zeek.org/downloads/zeek-${version}.tar.gz"
+checksum=a31c015afddef00022d3a2c0ab9383a616b6e6954cba467eb037d16b88aaac8c
 nocross="Needs to build part of itself to run, can't be built separately yet."
 
 case "$XBPS_TARGET_MACHINE" in
 	*-musl)
-		makedepends+=" musl-fts-devel"
+		makedepends+=" musl-fts-devel musl-legacy-compat"
 		;;
 esac
 
 pre_configure() {
 	case "$XBPS_TARGET_MACHINE" in
 		*-musl)
-			sed -i '/set(broxygen/i link_libraries("-lfts")' src/broxygen/CMakeLists.txt
+			sed -i '/set(zeekygen/i link_libraries("-lfts")' src/zeekygen/CMakeLists.txt
 		;;
 	esac
 }
@@ -36,14 +37,20 @@ post_install() {
 binpac_package() {
 	short_desc+=" - protocol parser compiler"
 	pkg_install() {
-		vmove /usr/bin/binpac
+		vmove usr/bin/binpac
 	}
 }
 
 binpac-devel_package() {
 	short_desc+=" - protocol parser compiler library"
 	pkg_install() {
-		vmove /usr/include
-		vmove "/usr/lib/*.a"
+		vmove usr/include
+		vmove "usr/lib/*.a"
 	}
+}
+
+bro_package() {
+	depends="${sourcekg}>=${version}_${revision}"
+	build_style=meta
+	short_desc+=" (transitional dummy package)"
 }
