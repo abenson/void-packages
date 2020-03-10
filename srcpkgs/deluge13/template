@@ -1,0 +1,50 @@
+# Template file for 'deluge13'
+pkgname=deluge13
+version=1.3.15
+revision=1
+archs=noarch
+build_style=python2-module
+wrksrc="deluge-${version}"
+hostmakedepends="intltool python-setuptools"
+depends="python-setuptools python-chardet Twisted python-xdg libtorrent-rasterbar-python"
+short_desc="Fully-featured cross-platform BitTorrent client"
+maintainer="Oprhaned <orphan@voidlinux.org>"
+license="GPL-3.0-or-later"
+homepage="http://deluge-torrent.org/"
+distfiles="http://download.deluge-torrent.org/source/deluge-${version}.tar.gz"
+checksum=2bd239fc7ec0427302677abb86f927299aed4f043eca5d8a1bab2986b3659666
+deluge_homedir="/var/lib/deluge"
+conflicts="deluge>=0"
+system_accounts="deluge"
+
+post_install() {
+	vsv deluged
+}
+
+deluge13-gtk_package() {
+	archs=noarch
+	conflicts="deluge-gtk>=0"
+	short_desc+=" - GTK+ frontend"
+	depends="${sourcepkg}-${version}_${revision} pygtk"
+	pkg_install() {
+		vmove usr/bin/deluge
+		vmove usr/bin/deluge-gtk
+		vmove ${py2_sitelib}/deluge/ui/gtkui
+		vmove usr/share/applications
+		vmove usr/share/icons
+		vmove usr/share/man/man1/deluge.1
+		vmove usr/share/man/man1/deluge-gtk.1
+	}
+}
+deluge13-web_package() {
+	archs=noarch
+	conflicts="deluge-web>=0"
+	short_desc+=" - Web frontend"
+	depends="${sourcepkg}-${version}_${revision} python-Mako"
+	pkg_install() {
+		vmove usr/bin/deluge-web
+		vmove ${py2_sitelib}/deluge/ui/web
+		vmove usr/share/man/man1/deluge-web.1
+		vsv deluge-web
+	}
+}
