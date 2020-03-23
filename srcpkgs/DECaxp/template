@@ -1,0 +1,21 @@
+# Template file for 'DECaxp'
+pkgname=DECaxp
+version=0.0.2019.09.11
+revision=1
+_gitver=be1621e0b0f643a44c923d4eafadfae866b98861
+archs="x86_64"
+wrksrc="${pkgname}-${_gitver}"
+build_style=cmake
+makedepends="libuuid-devel libpcap-devel libxml2-devel"
+short_desc="Digital, never Compaq or HP, Alpha AXP Emulator"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-only"
+homepage="https://github.com/JonathanBelanger/DECaxp"
+distfiles="${homepage}/archive/${_gitver}.tar.gz"
+checksum=9905e080780ee95b13e6f9efea0dbfb32c3482086007d642d8deaadd6cfe4d02
+
+do_install() {
+	vbin build/Executables/DECaxp
+	sed -n '71,191p' USER_GUIDE.md > DECaxp.xml
+	vsconf DECaxp.xml
+}
