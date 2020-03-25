@@ -3850,3 +3850,9 @@ libraven.so.0 budgie-desktop-10.5.1_1
 libbudgie-private.so.0 budgie-desktop-10.5.1_1
 libbudgietheme.so.0 budgie-desktop-10.5.1_1
 libbudgie-plugin.so.0 budgie-desktop-10.5.1_1
+libhidrd_util.so.0 hidrd-0.2.0_1
+libhidrd_usage.so.0 hidrd-0.2.0_1
+libhidrd_opt.so.0 hidrd-0.2.0_1
+libhidrd_item.so.0 hidrd-0.2.0_1
+libhidrd_strm.so.0 hidrd-0.2.0_1
+libhidrd_fmt.so.0 hidrd-0.2.0_1

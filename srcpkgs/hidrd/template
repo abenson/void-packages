@@ -1,0 +1,22 @@
+# Template file for 'hidrd'
+pkgname=hidrd
+version=0.2.0
+revision=1
+build_style=gnu-configure
+hostmakedepends="m4"
+short_desc="HID report descriptor I/O library and conversion tool"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/DIGImend/hidrd"
+distfiles="${homepage}/releases/download/${version}/hidrd-${version}.tar.gz"
+checksum=060c3f2ed20f6071440c8f8bfa7a063aa9529293f1a049ede76721ac3dcc7e95
+
+hidrd-devel_package() {
+	short_desc+=" - development files"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+		vmove "usr/lib/*.so"
+		vmove "usr/lib/*.a"
+	}
+}
