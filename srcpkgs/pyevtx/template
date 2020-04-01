@@ -1,0 +1,14 @@
+# Template file for 'pyevtx'
+pkgname=pyevtx
+version=0.6.1
+revision=1
+wrksrc="python-evtx-${version}"
+archs=noarch
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+short_desc="Pure Python parser for recent Windows Event Log files"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="Apache-2.0"
+homepage="http://www.williballenthin.com/"
+distfiles="https://github.com/williballenthin/python-evtx/archive/v${version}.tar.gz"
+checksum=4fc8604242dfe68929a77d45de4ff2f6f3b14593c0de984128478edf2a532302
