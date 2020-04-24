@@ -1,0 +1,26 @@
+# Template file for 'teams-bin'
+pkgname=teams-bin
+version=1.3.00.5153
+revision=1
+archs="x86_64"
+build_style=fetch
+hostmakedepends="dpkg tar"
+short_desc="Connect and collaborate with anyone from anywhere on Teams"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="custom:Proprietary"
+homepage="https://www.microsoft.com/en-us/microsoft-365/microsoft-teams/group-chat-software"
+distfiles="https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_${version}_amd64.deb"
+checksum=c928d01831b2ae9afd871172a6b56edf1d1c848655482973358f3d206375878d
+repository=nonfree
+restricted=yes
+nostrip=yes
+
+do_install() {
+	dpkg -x "${XBPS_SRCDISTDIR}/${pkgname}-${version}/teams_${version}_amd64.deb" "${DESTDIR}"
+	vsed -i "${DESTDIR}/usr/bin/teams" -e 's/share/lib/g'
+	mv "${DESTDIR}/usr/share" "${DESTDIR}/usr/lib"
+	for item in libEGL.so libGLESv2.so swiftshader/libEGL.so swiftshader/libGLESv2.so ; do
+		rm ${DESTDIR}/usr/lib/teams/$item
+	done
+	vlicense "${DESTDIR}/usr/lib/teams/resources/ReadmeFirstTermsofUse.txt"
+}
