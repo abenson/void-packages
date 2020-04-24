@@ -1,0 +1,18 @@
+# Template file for 'tuptime'
+pkgname=tuptime
+version=4.1.0
+revision=1
+archs=noarch
+depends="python3"
+short_desc="Historical and statistical real time of the system"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-only"
+homepage="https://github.com/rfrail3/tuptime"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb
+mutable_files="/var/lib/tuptime/tuptime.db"
+
+do_install() {
+	vbin src/tuptime
+	vman src/man/tuptime.1
+}
