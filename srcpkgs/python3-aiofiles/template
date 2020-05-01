@@ -1,0 +1,14 @@
+# Template file for 'python3-aiofiles'
+pkgname=python3-aiofiles
+version=0.5.0
+revision=1
+wrksrc="aiofiles-${version}"
+build_style=python3-module
+hostmakedepends=python3-setuptools
+makedepends=python3-devel
+short_desc="File support for asyncio"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/Tinche/aiofiles"
+distfiles="https://github.com/Tinche/aiofiles/archive/v${version}.tar.gz"
+checksum=b4b12877c1994a31162dc89efe5b2eeae2fe8c8b225290d90b8eaa95a612617c
