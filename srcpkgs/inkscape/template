@@ -1,24 +1,24 @@
 # Template file for 'inkscape'
 pkgname=inkscape
-version=0.92.5
+version=1.0
 revision=1
 wrksrc="${pkgname}-INKSCAPE_${version//./_}"
 build_style=cmake
 configure_args="--enable-lcms --enable-poppler-cairo
  --without-gnome-vfs --disable-static --disable-strict-build"
 hostmakedepends="pkg-config libtool intltool gettext-devel glib-devel tar which xz"
-makedepends="popt-devel libpng-devel gsl-devel gc-devel gtkmm2-devel libxslt-devel
+makedepends="popt-devel libpng-devel gsl-devel gc-devel gtkmm-devel libxslt-devel
  lcms2-devel poppler-glib-devel boost-devel libmagick6-devel
  libvisio-devel libwpg-devel libcdr-devel dbus-glib-devel libgomp-devel
- potrace-devel cairomm-devel"
+ potrace-devel cairomm-devel libsoup-devel double-conversion-devel gdl-devel"
 depends="desktop-file-utils hicolor-icon-theme python-lxml python-numpy python-scour"
 short_desc="Vector-based drawing program"
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="GPL-2.0-only, LGPL-2.1-or-later"
 homepage="http://inkscape.org/"
 distfiles="https://gitlab.com/inkscape/inkscape/-/archive/INKSCAPE_${version//./_}/inkscape-INKSCAPE_${version//./_}.tar.bz2"
-checksum=de5de2376585a6b77488eea5d94511c260f561d7477d08afc5edbbea99fee602
-python_version=2 #unverified
+checksum=673a1d8dfff4993917ac560d73ded4cab6edf8360cb97b99703658b14c03031f
+python_version=3
 
 # Use c++11 mode and reduce log spam due to gcc6 warnings
 CXXFLAGS="-std=c++11 -Wno-deprecated -Wno-deprecated-declarations -Wno-deprecated-copy"
