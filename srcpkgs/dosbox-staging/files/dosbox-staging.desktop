@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Dosbox Staging
+Comment=A free DOS emulator
+Icon=/usr/share/pixmaps/dosbox-staging.svg
+Exec=/usr/bin/dosbox-staging
+Terminal=false
+StartupNotify=false
+Categories=Game;

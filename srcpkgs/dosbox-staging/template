@@ -1,0 +1,26 @@
+# Template file for 'dosbox-staging'
+pkgname=dosbox-staging
+version=0.75.1
+revision=1
+build_style=gnu-configure
+configure_args="--program-suffix=-staging"
+hostmakedepends="pkg-config automake"
+makedepends="alsa-lib-devel libpng-devel SDL2_net-devel opusfile-devel"
+short_desc="Modernized DOS x86 emulator"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://dosbox-staging.github.io/"
+distfiles="https://github.com/dosbox-staging/dosbox-staging/archive/v${version}.tar.gz"
+checksum=9155cc7220e612817670fbe51f30c69e560573f1daad075037194f2731a538a8
+
+pre_configure() {
+	./autogen.sh
+}
+
+post_install() {
+	vdoc README
+	vdoc docs/README.video
+
+	vinstall ${FILESDIR}/${pkgname}.svg 644 usr/share/pixmaps
+	vinstall ${FILESDIR}/${pkgname}.desktop 644 usr/share/applications
+}
