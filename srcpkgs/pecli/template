@@ -1,0 +1,17 @@
+# Template file for 'pecli'
+pkgname=pecli
+version=0.0.2020.1.2
+revision=1
+archs=noarch
+_gitver=eab32d3672ad024c84f730b813b1081d5b12205d
+wrksrc="${pkgname}-${_gitver}"
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+depends="python3-pefile python3-yara python3-magic python3-ipython 
+ python3-virustotal-api python3-ssdeep"
+short_desc="Tool to analyze PE files"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/Te-k/pecli"
+distfiles="${homepage}/archive/${_gitver}.tar.gz"
+checksum=bbce20cbcedf800014f59e42c28b3f2150482298e7696254ef5e08c67c89b970
