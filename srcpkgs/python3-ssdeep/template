@@ -1,0 +1,14 @@
+# Template file for 'python3-ssdeep'
+pkgname=python3-ssdeep
+version=3.4
+revision=1
+wrksrc="python-ssdeep-${version}"
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+makedepends="python3-devel libfuzzy-devel"
+short_desc="Python3 wrapper for ssdeep fuzzy hashing library"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="LGPL-3.0-or-later, GPL-2.0-only"
+homepage="https://github.com/DinoTools/python-ssdeep"
+distfiles="${homepage}/archive/${version}.tar.gz"
+checksum=1924ca700aedd6563b9939cac6519d5aa24c4c3c24e09a748b31c09955b09ad4
