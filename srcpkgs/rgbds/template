@@ -1,0 +1,16 @@
+# Template file for 'rgbds'
+pkgname=rgbds
+version=0.4.0
+revision=1
+build_style=gnu-makefile
+wrksrc="rgbds"
+make_builds_args="Q="
+make_install_args="Q="
+hostmakedepends="pkg-config bison"
+makedepends="libpng-devel"
+short_desc="Rednex Game Boy Development System"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://rednex.github.io/rgbds/"
+distfiles="https://github.com/rednex/rgbds/releases/download/v${version}/rgbds-${version}.tar.gz"
+checksum=bd8ed69ac395b224d2b55db2cd57791bfd6b836891e7691cd8742344873d33e5
