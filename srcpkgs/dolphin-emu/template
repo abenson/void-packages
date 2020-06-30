@@ -1,25 +1,25 @@
 # Template file for 'dolphin-emu'
 pkgname=dolphin-emu
-version=5.0
-revision=18
+version=5.0.11991
+revision=1
+_commit=8d4e8314a3dcd8680ae81d91fb7e076b4496b43b
+#Version/hash pair can be found at https://dolphin-emu.org/download/
 archs="x86_64* ppc64le*"
-wrksrc="dolphin-${version}"
+wrksrc="dolphin-${_commit}"
 build_style=cmake
-configure_args="-DUSE_X11=1 -DUSE_EGL=0
- -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-3.0"
-hostmakedepends="pkg-config"
+hostmakedepends="pkg-config qt5-host-tools"
 makedepends="
- zlib-devel glew-devel libusb-devel gtk+-devel miniupnpc-devel libevdev-devel
+ zlib-devel glew-devel libusb-devel qt5-devel miniupnpc-devel libevdev-devel
  SDL2-devel pulseaudio-devel alsa-lib-devel ffmpeg-devel libgomp-devel libcurl-devel
- portaudio-devel libopenal-devel soundtouch-devel lzo-devel wxWidgets-devel
- mbedtls-devel SFML-devel libenet-devel"
+ portaudio-devel libopenal-devel soundtouch-devel lzo-devel libbluetooth-devel
+ mbedtls-devel SFML-devel libenet-devel liblzma-devel pugixml-devel"
 depends="desktop-file-utils"
 short_desc="Gamecube / Wii / Triforce emulator"
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="GPL-2.0-or-later"
 homepage="http://dolphin-emu.org"
-distfiles="https://github.com/dolphin-emu/dolphin/archive/${version}.tar.gz"
-checksum=62c4602055767ab314ff50a3b94ea57f792832aa1629e6b1117ebce10518dc0b
+distfiles="https://github.com/dolphin-emu/dolphin/archive/${_commit}.tar.gz"
+checksum=ed6cb5e4a999b83d36492357c56466e0a35fab2dcc1c71f60f93f7629aaddf55
 nopie=yes
 
 case "$XBPS_TARGET_MACHINE" in
