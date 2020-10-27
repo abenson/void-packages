@@ -1,0 +1,11 @@
+--- demos/programs/Exm/simple_app/Makefile.in.orig
++++ demos/programs/Exm/simple_app/Makefile.in
+@@ -379,7 +379,7 @@
+            ${X_CFLAGS} 
+ 
+ LDADD = ../../../../lib/Xm/libXm.la \
+-        ../../../lib/Exm/libExm.a
++        ../../../lib/Exm/libExm.a -lX11
+ 
+ all: all-am
+ 

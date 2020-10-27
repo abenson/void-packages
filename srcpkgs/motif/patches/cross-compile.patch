@@ -1,0 +1,51 @@
+--- configure.orig
++++ configure
+@@ -2399,7 +2399,7 @@
+   $as_echo_n "(cached) " >&6
+ else
+   test "$cross_compiling" = yes &&
+-  as_fn_error $? "cannot check for file existence when cross compiling" "$LINENO" 5
++  #as_fn_error $? "cannot check for file existence when cross compiling" "$LINENO" 5
+ if test -r "/usr/X/include/X11/X.h"; then
+   ac_cv_file__usr_X_include_X11_X_h=yes
+ else
+@@ -2422,7 +2422,7 @@
+   $as_echo_n "(cached) " >&6
+ else
+   test "$cross_compiling" = yes &&
+-  as_fn_error $? "cannot check for file existence when cross compiling" "$LINENO" 5
++  #as_fn_error $? "cannot check for file existence when cross compiling" "$LINENO" 5
+ if test -r "/usr/X11R6/include/X11/X.h"; then
+   ac_cv_file__usr_X11R6_include_X11_X_h=yes
+ else
+--- config/util/Makefile.in.orig
++++ config/util/Makefile.in
+@@ -129,20 +129,20 @@
+ depcomp = $(SHELL) $(top_srcdir)/depcomp
+ am__depfiles_maybe = depfiles
+ am__mv = mv -f
+-COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+-	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
++COMPILE = $(CC_FOR_BUILD) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
++	$(CPPFLAGS_FOR_BUILD) $(AM_CFLAGS) $(CFLAGS_FOR_BUILD)
+ LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+-	$(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) \
+-	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
+-	$(AM_CFLAGS) $(CFLAGS)
++	$(LIBTOOLFLAGS) --mode=compile $(CC_FOR_BUILD) $(DEFS) \
++	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS_FOR_BUILD) \
++	$(AM_CFLAGS) $(CFLAGS_FOR_BUILD)
+ AM_V_CC = $(am__v_CC_@AM_V@)
+ am__v_CC_ = $(am__v_CC_@AM_DEFAULT_V@)
+ am__v_CC_0 = @echo "  CC      " $@;
+ am__v_CC_1 = 
+-CCLD = $(CC)
++CCLD = $(CC_FOR_BUILD)
+ LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+-	$(AM_LDFLAGS) $(LDFLAGS) -o $@
++	$(LIBTOOLFLAGS) --mode=link $(CC_FOR_BUILD) $(AM_CFLAGS) $(CFLAGS_FOR_BUILD) \
++	$(AM_LDFLAGS) $(LDFLAGS_FOR_BUILD) -o $@
+ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
+ am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
+ am__v_CCLD_0 = @echo "  CCLD    " $@;

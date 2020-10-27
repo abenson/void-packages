@@ -3992,3 +3992,6 @@ libSeExpr2Editor.so.3 seexpr-krita-3.4.4.0_1
 libSeExpr2.so.3 seexpr-krita-3.4.4.0_1
 liburing.so.1 liburing-0.7_1
 libbson-1.0.so.0 libbson-1.17.0_1
+libXm.so.4	motif-2.3.8_1
+libMrm.so.4	motif-2.3.8_1
+libUil.so.4 motif-2.3.8_1

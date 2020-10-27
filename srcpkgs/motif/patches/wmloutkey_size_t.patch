@@ -1,0 +1,11 @@
+--- tools/wml/wmloutkey.c
++++ tools/wml/wmloutkey.c
+@@ -621,7 +621,7 @@
+     fprintf (outfil, "    {%s, %s, %d, %s, \"%s\"},\n",
+         tkclass,
+         tksym,
+-        strlen(tokstg),
++        (int)strlen(tokstg),
+         tktoken,
+         tokstg);
+     if ( (int)strlen(tokstg) > *maxlen )
