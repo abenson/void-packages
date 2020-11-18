@@ -1,0 +1,24 @@
+# Template file for 'dicepoker'
+pkgname=dicepoker
+version=0.0.2020.11.18
+revision=1
+_githash=efda3e91f42ba3882f91c6838074b4bdf85676d6
+wrksrc="${pkgname}-${_githash}"
+build_style=gnu-makefile
+make_use_env=yes
+hostmakedepends="gnustep-make"
+makedepends="gnustep-base-devel"
+short_desc="Terminal based dice poker game"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-only"
+homepage="https://github.com/abenson/dicepoker"
+distfiles="${homepage}/archive/${_githash}.tar.gz"
+checksum=ea97b00b0ab06c10cf28efbaa50018c7a83f7cfa80fcd5d025bc1dfe0a01a40f
+
+pre_build() {
+	source /usr/share/GNUstep/Makefiles/GNUstep.sh
+}
+
+pre_install() {
+	source /usr/share/GNUstep/Makefiles/GNUstep.sh
+}
