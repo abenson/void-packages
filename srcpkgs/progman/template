@@ -1,0 +1,22 @@
+# Template file for 'progman'
+pkgname=progman
+version=0.0.2020.08.10
+revision=1
+_githash=1d001b5ec8418ee5e625828f8cbd6a8e17113a5a
+wrksrc="${pkgname}-${_githash}"
+build_style=gnu-makefile
+make_use_env=yes
+hostmakedepends="pkg-config"
+makedepends="libX11-devel libXft-devel libXext-devel libXpm-devel gtk+-devel
+ freetype-devel"
+short_desc="Simple X11 window manager modeled after ProgMan from Windows 3.x"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/jcs/progman"
+distfiles="${homepage}/archive/${_githash}.tar.gz"
+checksum=13d6d434d5dabec4e876991379a406d2d59e87deab7cab32816a81a79c5dc001
+
+post_install() {
+	vsconf progman.ini
+	vlicense LICENSE
+}
