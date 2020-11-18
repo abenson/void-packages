@@ -1,0 +1,20 @@
+# Template file for 'progman'
+pkgname=progman
+version=1.0
+revision=1
+build_style=gnu-makefile
+make_use_env=yes
+hostmakedepends="pkg-config xxd"
+makedepends="libX11-devel libXft-devel libXext-devel libXpm-devel gtk+-devel
+ freetype-devel gdk-pixbuf-xlib-devel"
+short_desc="Simple X11 window manager modeled after ProgMan from Windows 3.x"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/jcs/progman"
+distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz"
+checksum=28bbc33ee64fdcaa086b1b134220b69c9d5a4aec887e043612bbca51dbe17e34
+
+post_install() {
+	vsconf progman.ini
+	vlicense LICENSE
+}

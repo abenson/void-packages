@@ -1,0 +1,22 @@
+--- a/Makefile
++++ b/Makefile
+@@ -24,7 +24,7 @@
+ PREFIX?=	/usr/local
+ X11BASE?=	/usr/X11R6
+ 
+-PKGLIBS=	x11 xft xext xpm
++PKGLIBS=	x11 xft xext xpm freetype2
+ 
+ CC?=		cc
+ CFLAGS+=	-O2 -Wall -Wunused \
+@@ -71,8 +71,8 @@
+ 	$(CC) -o $@ $(OBJ) $(LDFLAGS)
+ 
+ install: all
+-	mkdir -p $(BINDIR) $(MANDIR)
+-	install -s $(BIN) $(BINDIR)
++	mkdir -p $(DESTDIR)$(BINDIR) $(DESTDIR)$(MANDIR)
++	install -s $(BIN) $(DESTDIR)$(BINDIR)
+ 
+ clean:
+ 	rm -f $(BIN) $(OBJ)
