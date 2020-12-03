@@ -1,23 +1,13 @@
 # Template file for 'xsnow'
 pkgname=xsnow
-version=1.42
-revision=2
-hostmakedepends="imake xorg-cf-files"
-makedepends="libXext-devel libXpm-devel libXt-devel"
+version=3.1.5
+revision=1
+build_style="gnu-configure"
+hostmakedepends="pkg-config"
+makedepends="libX11-devel libXpm-devel libXt-devel libxml2-devel gtk+3-devel"
 short_desc="Snow for your X11 sessions"
 maintainer="Leah Neukirchen <leah@vuxu.org>"
-license="xsnow"
-homepage="https://janswaal.home.xs4all.nl/Xsnow"
-distfiles="https://janswaal.home.xs4all.nl/Xsnow/${pkgname}-${version}.tar.gz"
-checksum=d0d7c8f1fb91ca096995b1c30797e8f443c2e97d6f1e5f574b31318ed05d561a
-repository=nonfree
-nocross=yes  # imake
-
-do_build() {
-	xmkmf
-	make CC=$CC CDEBUGFLAGS="-D_DEFAULT_SOURCE ${CFLAGS}" EXTRA_LDOPTIONS="${LDFLAGS}"
-}
-do_install() {
-	make MANSUFFIX=1 DESTDIR=${DESTDIR} install install.man
-	vlicense README
-}
+license="GPL-3.0-or-later"
+homepage="https://www.ratrabbit.nl/ratrabbit/software/xsnow/index.html"
+distfiles="https://www.ratrabbit.nl/downloads/xsnow/xsnow-3.1.5.tar.gz"
+checksum=eca8c6153df866e640209e53ef33d8a2d55e4b66a735972e186a3b2bf58198bd
