@@ -1,0 +1,18 @@
+# Template file for 'axpbox'
+pkgname=axpbox
+version=1.0.0
+revision=1
+build_style=cmake
+hostmakedepends="pkg-config"
+makedepends="libpcap-devel SDL2-devel libX11-devel"
+short_desc="Emulator for Alpha AXP"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/lenticularis39/axpbox"
+distfiles="${homepage}/archive/v${version}.tar.gz"
+checksum=4a4fce4f7cfa4802853e469916e94ad5b7f3437f94aadde65e7a26179a982170
+
+do_install() {
+	vsconf es40.cfg
+	vbin build/axpbox
+}
