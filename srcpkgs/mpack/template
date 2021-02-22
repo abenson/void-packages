@@ -1,0 +1,19 @@
+# Template file for 'mpack'
+pkgname=mpack
+version=1.6
+revision=1
+build_style=gnu-configure
+short_desc="Tools for encoding/decoding MIME messages"
+maintainer="Andrew Benson <abenson@gmail.com>"
+license="MIT"
+homepage="https://gitlab.com/osdp/mpack"
+distfiles="${homepage}/-/archive/${version}/mpack-${version}.tar.bz2"
+checksum=7407bd9306b44bb4f7c600452da225b3f5f6d0a8418255e7050c6715b725f97d
+
+post_extract() {
+	sed -n '1,24p' version.h > LICENSE
+}
+
+post_install() {
+	vlicense LICENSE
+}
