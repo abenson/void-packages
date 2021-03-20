@@ -1,0 +1,22 @@
+# Template file for 'flint2'
+pkgname=flint2
+version=2.7.1
+revision=1
+build_style=cmake
+hostmakedepends="python3"
+makedepends="gmp-devel mpfr-devel blas-devel"
+short_desc="Fast Library for Number Theory"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="LGPL-2.1-or-later"
+homepage="https://flintlib.org/"
+distfiles="https://github.com/wbhart/flint2/archive/v${version}.tar.gz"
+checksum=bcadc2252e61092a9b3a3198b337e20abeac56078eaa19793ab99ff7a987efb7
+
+flint2-devel_package() {
+	short_desc+=" - development files"
+	depends+=" ${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+		vmove "usr/lib/*.so"
+	}
+}
