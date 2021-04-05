@@ -1,7 +1,7 @@
 # Template file for 'python-M2Crypto'
 pkgname=python-M2Crypto
-version=0.35.2
-revision=6
+version=0.37.1
+revision=1
 wrksrc="M2Crypto-${version}"
 build_style=python-module
 pycompile_module="M2Crypto"
@@ -13,7 +13,7 @@ maintainer="Orphaned <orphan@voidlinux.org>"
 license="MIT"
 homepage="https://gitlab.com/m2crypto/m2crypto/"
 distfiles="${PYPI_SITE}/M/M2Crypto/M2Crypto-${version}.tar.gz"
-checksum=4c6ad45ffb88670c590233683074f2440d96aaccb05b831371869fc387cbd127
+checksum=e4e42f068b78ccbf113e5d0a72ae5f480f6c3ace4940b91e4fff5598cfff6fb3
 
 post_install() {
 	vlicense LICENCE
