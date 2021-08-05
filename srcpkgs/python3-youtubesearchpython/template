@@ -1,0 +1,16 @@
+# Template file for 'python3-youtubesearchpython'
+pkgname=python3-youtubesearchpython
+version=0.4.6
+revision=1
+wrksrc="youtubesearchpython-${version}"
+build_style=python3-module
+short_desc="Search for YouTube videos, channels & playlists"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/alexmercerind/youtube-search-python"
+distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz"
+checksum=badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb
+
+post_install() {
+	vlicense LICENSE
+}
