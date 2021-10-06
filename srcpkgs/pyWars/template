@@ -1,0 +1,22 @@
+# Template file for 'pyWars'
+pkgname=pyWars
+version=4.0.3
+revision=1
+_gitrev=221c17e9293a71092dca05917f164df9798ee638
+wrksrc="${pkgname}-${_gitrev}"
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+depends="python3-requests python3-rich"
+short_desc="Latest pyWars client for the SEC573 class"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="custom:SANS"
+homepage="https://www.sans.org/cyber-security-courses/automating-information-security-with-python/"
+distfiles="https://github.com/MarkBaggett/pyWars/archive/${_gitrev}.tar.gz"
+checksum=e5e52b488d66fdaa74fd9f6feb0ea59dda0bf88250513c37e554a04c7e64c507
+make_check=no # doesn't include tests
+repository=nonfree
+restricted=yes
+
+post_install() {
+	vlicense LICENSE
+}
