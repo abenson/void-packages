@@ -1,0 +1,33 @@
+# Template file for 'libesedb'
+pkgname=libesedb
+version=20210424
+revision=1
+build_style=gnu-configure
+hostmakedepends="pkg-config autoconf libtool gettext-devel-tools"
+makedepends="gettext-devel"
+short_desc="Library for the ESE Database File (EDB) format"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="LGPL-3.0-or-later"
+homepage="https://github.com/libyal/libesedb"
+distfiles="${homepage}/releases/download/${version}/libesedb-experimental-${version}.tar.gz"
+checksum=c8e3e22887b85df6ea06d356b118844cb1c5ada6b245cab11ece5222c8d460ac
+
+libesedb-devel_package() {
+	short_desc+=" - development files"
+	depends+="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove usr/share/man/man3
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+	}
+}
+
+libesedb-tools_package() {
+    short_desc+=" - utilities"
+	pkg_install() {
+		vmove usr/bin
+		vmove usr/share/man/man1
+	}
+}
