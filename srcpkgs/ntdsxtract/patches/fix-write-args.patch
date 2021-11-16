@@ -1,0 +1,11 @@
+--- a/ntds/__init__.py
++++ b/ntds/__init__.py
+@@ -28,7 +28,7 @@
+         debug = True
+ 
+ def simple_exception(type, value, traceback):
+-    sys.stderr.write("[!] Error!", value, "\n")
++    sys.stderr.write("[!] Error!" + str(value) + "\n")
+     sys.exit(1)
+ 
+ if debug == False:

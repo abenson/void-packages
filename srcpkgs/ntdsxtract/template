@@ -1,0 +1,15 @@
+# Template file for 'ntdsxtract'
+pkgname=ntdsxtract
+version=0.0.2016.02.13
+revision=1
+_gitrev=7fa1c8c28cbbf97a42bef40f20009dba85e4c25f
+build_style=python2-module
+wrksrc="$pkgname-${_gitrev}"
+hostmakedepends="python-setuptools"
+depends="python"
+short_desc="Active Directory forensic framework"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="www.ntdsxtract.com"
+distfiles="https://github.com/csababarta/ntdsxtract/archive/${_gitrev}.tar.gz"
+checksum=4a03474437dd500ed04305147fd62b91bcf2ec878b286addc5ce78ff18b8156b
