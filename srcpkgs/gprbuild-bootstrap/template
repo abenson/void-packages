@@ -1,0 +1,33 @@
+# Template file for 'gprbuild-bootstrap'
+pkgname=gprbuild-bootstrap
+version=23.0.0
+revision=1
+hostmakedepends="gcc-ada which"
+short_desc="GNAT’s Project Manager"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://docs.adacore.com/gprbuild-docs/html/gprbuild_ug.html"
+distfiles="https://github.com/AdaCore/gprbuild/archive/refs/tags/v${version}.tar.gz>gprbuild-${version}.tar.gz
+ https://github.com/AdaCore/xmlada/archive/refs/tags/v${version}.tar.gz>xmlada-${version}.tar.gz
+ https://github.com/AdaCore/gprconfig_kb/archive/refs/tags/v${version}.tar.gz>gprconfig_kb-${version}.tar.gz"
+checksum="141b403ea8a3f82b58b6a8690f8409fe295f3692b667ba3ec487fafcbd26e389
+ 66245a68f2e391c8dc8dc50d6d5f109eb3b371e261d095d2002dff3927dd5253
+ 182d9108c91390ddd67c841e45a3fc9dd23a94b33d4a1f05ed2788c1fb9b7dd2"
+build_wrksrc="gprbuild-${version}"
+repository=bootstrap
+
+do_build() {
+	mv ${wrksrc}/xmlada-${version} xmlada
+	mv ${wrksrc}/gprconfig_kb-${version} gprconfig_kb
+	./bootstrap.sh \
+	 --with-xmlada="./xmlada" \
+	 --with-kb="./gprconfig_kb" \
+	 --build
+}
+
+do_install() {
+	DESTDIR="${DESTDIR}" ./bootstrap.sh \
+	 --with-kb="./gprconfig_kb" \
+	 --prefix="/usr" \
+	 --install
+}
