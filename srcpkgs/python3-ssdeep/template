@@ -1,0 +1,17 @@
+# Template file for 'python3-ssdeep'
+pkgname=python3-ssdeep
+version=3.4
+revision=1
+wrksrc="ssdeep-${version}"
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core python3-wheel python3-six python3-cffi"
+makedepends="libfuzzy-devel python3-devel"
+depends="python3-cffi"
+checkdepends="python3-pytest"
+short_desc="Python3 wrapper for ssdeep"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="LGPL-3.0-or-later"
+homepage="https://github.com/DinoTools/python-ssdeep"
+distfiles="${PYPI_SITE}/s/ssdeep/ssdeep-${version}.tar.gz"
+checksum=1b5510716bc495a2b18300ea837fcf944552a1cc678bb74e384bce251d99a85f
+make_check=no # fiik
