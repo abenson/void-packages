@@ -1,0 +1,19 @@
+# Template file for 'pecli'
+pkgname=pecli
+version=0.1.4
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core python3-wheel"
+depends="python3-pefile python3-yara python3-magic python3-ipython
+ python3-virustotal-api python3-ssdeep"
+short_desc="Tool to analyze PE files"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/Te-k/pecli"
+distfiles="${PYPI_SITE}/p/pecli/pecli-${version}.tar.gz"
+checksum=f8154c06a0057ef789cbd23d29ea0d2695aff14dce24eceecb2cbe7089795a80
+make_check=no # no tests
+
+post_install() {
+	vlicense LICENSE
+}
