@@ -1,7 +1,7 @@
 # Template file for 'fbgrab'
 pkgname=fbgrab
 version=1.5
-revision=1
+revision=2
 build_style=gnu-makefile
 makedepends="zlib-devel libpng-devel"
 short_desc="Linux framebuffer screenshot program"

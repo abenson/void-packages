@@ -1,0 +1,32 @@
+--- a/fbgrab.c
++++ b/fbgrab.c
+@@ -31,15 +31,29 @@
+ #define MAX_LEN 512
+ #define UNDEFINED -1
+ 
++#ifdef __BIG_ENDIAN__
++static int srcRed = 0;
++static int srcGreen = 1;
++static int srcBlue = 2;
++static int srcAlpha = 3;
++#else
+ static int srcBlue = 0;
+ static int srcGreen = 1;
+ static int srcRed = 2;
+ static int srcAlpha = 3;
++#endif
+ 
++#ifdef __BIG_ENDIAN__
++static const int Red = 0;
++static const int Green = 1;
++static const int Blue = 2;
++static const int Alpha = 3;
++#else
+ static const int Blue = 0;
+ static const int Green = 1;
+ static const int Red = 2;
+ static const int Alpha = 3;
++#endif
+ 
+ /*@noreturn@*/ static void fatal_error(char *message)
+ {
