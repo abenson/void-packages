@@ -1,0 +1,12 @@
+# Template file for 'mdless'
+pkgname=mdless
+version=1.0.27
+revision=1
+build_style=gemspec
+depends="ruby"
+short_desc="Formatt and highlight Markdown files in Terminal"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/ttscoff/mdless"
+distfiles="${homepage}/archive/refs/tags/${version}.tar.gz"
+checksum=07964ed5957583e261f3397e815afa300fbeaba0ebf39a51dcfc6df795c63fbc
