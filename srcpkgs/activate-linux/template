@@ -1,0 +1,23 @@
+# Template file for 'activate-linux'
+pkgname=activate-linux
+version=1.0.0
+revision=1
+build_style=gnu-makefile
+make_use_env=yes
+hostmakedepends="pkg-config clang wayland-devel"
+makedepends="libX11-devel cairo-devel libXi-devel xorgproto xcb-proto 
+ libXt-devel libXinerama-devel libXrandr-devel wayland-protocols"
+short_desc="The 'Activate Windows' watermark ported to Linux"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="custom:GPL-3.0-or-later"
+homepage="https://github.com/MrGlockenspiel/activate-linux"
+distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz"
+checksum=3698f4e925045cce7f65c2d54cf16d770158a70e4e39ca270d335a3f5fd3d27a
+
+export CFLAGS+="-Isrc/"
+export LDFLAGS+="-lrt"
+
+do_install() {
+	vbin activate-linux
+	vlicense LICENSE.md LICENSE
+}
