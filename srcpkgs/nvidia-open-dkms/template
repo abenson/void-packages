@@ -1,0 +1,28 @@
+# Template file for 'nvidia-open-dkms'
+pkgname=nvidia-open-dkms
+version=515.48.07
+revision=1
+archs="x86_64"
+wrksrc="open-gpu-kernel-modules-${version}"
+depends="dkms nvidia"
+short_desc="NVIDIA Linux open GPU kernel module source"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-only, MIT"
+homepage="https://github.com/NVIDIA/open-gpu-kernel-modules"
+distfiles="https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${version}.tar.gz"
+checksum=2bc90ce97b79f13457742f8c2f39c762a4d51bbb378e169744a4941df840cb89
+replaces="nvidia-dkms>=0"
+dkms_modules="nvidia-open ${version}"
+
+do_install() {
+	vmkdir usr/src/nvidia-open-${version}
+	vinstall ${FILESDIR}/dkms.conf 0644 usr/src/nvidia-open-${version}
+	vsed -i ${DESTDIR}/usr/src/nvidia-open-${version}/dkms.conf -e "s/__VERSION_STRING/${version}/"
+
+	vcopy "kernel-open/nvidia*" usr/src/nvidia-open-${version}
+
+	vmkdir usr/lib/modprobe.d
+	echo "options nvidia NVreg_OpenRmEnableUnsupportedGpus=1" > $DESTDIR/usr/lib/modprobe.d/nvidia-open.conf
+
+	vlicense COPYING
+}
