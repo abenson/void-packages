@@ -1,15 +1,19 @@
 # Template file for 'rstudio'
 pkgname=rstudio
-version=1.4.1717
+version=1.4.1743
 revision=1
 build_style=cmake
+IFS=. read _major _minor _patch <<< $version
 configure_args="-DRSTUDIO_TARGET=Desktop
  -DRSTUDIO_USE_SYSTEM_BOOST=ON
  -DRSTUDIO_USE_SYSTEM_SOCI=TRUE
  -DRSTUDIO_USE_SYSTEM_YAML_CPP=TRUE
  -DRSTUDIO_BOOST_SIGNALS_VERSION=2
  -DQT_QMAKE_EXECUTABLE=/usr/lib/qt5/bin/qmake
- -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio"
+ -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio
+ -DRSTUDIO_VERSION_MAJOR=${_major}
+ -DRSTUDIO_VERSION_MINOR=${_minor}
+ -DRSTUDIO_VERSION_PATCH=${_patch}"
 hostmakedepends="unzip pandoc openjdk apache-ant R qt5-qmake
  qt5-host-tools which nodejs-lts"
 makedepends="zlib-devel libuuid-devel openssl-devel pam-devel R mathjax
@@ -25,7 +29,7 @@ license="AGPL-3.0-only"
 homepage="https://www.rstudio.com"
 distfiles="https://github.com/rstudio/rstudio/archive/v${version}.tar.gz
  https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip"
-checksum="3af234180fd7cef451aef40faac2c7b52860f14a322244c1c7aede029814d261
+checksum="f046b2e91d4b27794d989e9bb2d7ad951b913ae86ed485364fc5b7fccba9c927
  4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494"
 skip_extraction="core-dictionaries.zip"
 
