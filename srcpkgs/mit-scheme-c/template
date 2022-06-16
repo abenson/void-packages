@@ -1,33 +1,43 @@
 # Template file for 'mit-scheme-c'
 pkgname=mit-scheme-c
-version=9.2
-revision=2
+version=11.2
+revision=1
+archs="x86_64* aarch64*"
+wrksrc="mit-scheme-${version}"
 build_wrksrc="src"
+build_style=gnu-configure
+configure_args="--with-x --enable-x11"
+hostmakedepends="m4"
+makedepends="libX11-devel ncurses-devel"
 short_desc="Implementation of the Scheme programming language"
 maintainer="Andrew Benson <abenson+void@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://www.gnu.org/software/mit-scheme/"
-distfiles="${GNU_SITE}/mit-scheme/stable.pkg/${version}/mit-scheme-c-${version}.tar.gz"
-checksum=4f6a16f9c7d4b4b7bb3aa53ef523cad39b54ae1eaa3ab3205930b6a87759b170
 alternatives="
  scheme:scheme:/usr/bin/mit-scheme
  scheme:scheme.1:/usr/share/man/man1/mit-scheme.1
 "
-nocross="Tries to build parts of the package with itself"
+disable_parallel_build=yes
 
-CFLAGS="-fcommon"
+nocross="Explicitly does not support cross-building"
+
+CFLAGS+=" -D__USE_GNU"
+
+case "$XBPS_MACHINE" in
+	x86_64*)
+		distfiles="${GNU_SITE}/mit-scheme/stable.pkg/${version}/mit-scheme-${version}-x86-64.tar.gz"
+		checksum=7ca848cccf29f2058ab489b41c5b3a101fb5c73dc129b1e366fb009f3414029d
+		;;
+	aarch64*)
+		distfiles="${GNU_SITE}/mit-scheme/stable.pkg/${version}/mit-scheme-${version}-aarch64le.tar.gz"
+		checksum=49679bcf76c8b5896fda8998239c4dff0721708de4162dcbc21c88d9688faa86
+		;;
+	*)
+		broken="Not currently supported as a build-host architecture"
+		;;
+esac
 
 case "$XBPS_TARGET_MACHINE" in
 	ppc) broken="free(): invalid pointer";;
 	ppc*-musl) broken="Fails to link";;
 esac
-
-do_build() {
-	etc/make-liarc.sh --prefix=/usr
-}
-
-do_install() {
-	make install DESTDIR=${DESTDIR}
-	rm ${DESTDIR}/usr/bin/scheme
-	vman ../doc/scheme.1 mit-scheme.1
-}
