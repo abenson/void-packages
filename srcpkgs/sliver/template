@@ -1,0 +1,35 @@
+# Template file for 'sliver'
+pkgname=sliver
+version=1.5.23
+revision=1
+build_style=go
+go_import_path="github.com/BishopFox/sliver"
+go_build_tags="osusergo,netgo,cgosqlite,sqlite_omit_load_extension"
+_verpkg="github.com/bishopfox/sliver/client/version"
+_assetspkg="github.com/bishopfox/sliver/client/assets"
+go_ldflags="-X ${_verpkg}.Version='${version}'
+ -X ${_verpkg}.GoVersion='1.18'
+ -X ${_verpkg}.CompiledAt='$SOURCE_DATE_EPOCH'
+ -X ${_verpkg}.GithubReleasesURL='https://api.github.com/repos/BishopFox/sliver/releases'
+ -X ${_verpkg}.GitCommit='$XBPS_GIT_REVS'
+ -X ${_verpkg}.GitDirty=''
+ -X ${_assetspkg}.DefaultArmoryPublicKey='RWSBpxpRWDrD7Fe+VvRE3c2VEDC2NK80rlNCj+BX0gz44Xw07r6KQD9L'
+ -X ${_assetspkg}.DefaultArmoryRepoURL='https://api.github.com/repos/sliverarmory/armory/releases'"
+hostmakedepends="tar unzip zip curl"
+short_desc="Adversary Emulation Framework"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/BishopFox/sliver"
+distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz"
+checksum=800fecd078061f7e6e688d156d74844ae4e5fdb6efcfddedabe96c9377e95e37
+
+pre_configure() {
+	./go-assets.sh
+}
+
+do_build() {
+	for part in server client; do
+		GOOS=linux go build -mod=vendor -trimpath -tags "${go_build_tags},${part}" -ldflags "${go_ldflags}" -o sliver-${part} ./${part}
+	done
+	exit
+}
