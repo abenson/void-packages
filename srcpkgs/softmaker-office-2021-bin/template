@@ -1,0 +1,64 @@
+# Template file for 'softmaker-office-2021-bin'
+pkgname=softmaker-office-2021-bin
+version=1050
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+hostmakedepends="bsdtar"
+short_desc="SoftMaker's full-featured office suite"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="custom:Proprietary"
+homepage="https://www.softmaker.com/en/"
+nopie_files="
+ /usr/lib/office2021/planmaker
+ /usr/lib/office2021/textmaker
+ /usr/lib/office2021/presentations"
+repository=nonfree
+restricted=yes
+
+build_options="paid"
+desc_option_paid="Paid version of SoftMaker Office"
+
+if [ "$build_option_paid" ]; then
+	distfiles="https://www.softmaker.net/down/softmaker-office-2021-${version}-amd64.tgz" \
+	checksum=b821c237a7af35f751838598a192fea076cbdb5d47b433a7ae3947317dd7943c
+	_extract_file="office2021.tar.lzma"
+else
+	distfiles="https://www.softmaker.net/down/softmaker-freeoffice-2021-1050-amd64.tgz"
+	checksum=6da1febd9bf6e048a86513b6a0bf9c29498cdc5e4204afbb91f5ccdb2c66e4dc
+	_extract_file="freeoffice2021.tar.lzma"
+fi
+
+do_install() {
+	vmkdir "usr/lib/office2021"
+	bsdtar xf "${_extract_file}" -C "${DESTDIR}/usr/lib/office2021"
+	vbin "${FILESDIR}/planmaker21"
+	vbin "${FILESDIR}/presentations21"
+	vbin "${FILESDIR}/textmaker21"
+
+	for size in 16 32 48 64 128 256 512; do
+		vmkdir "usr/share/icons/hicolor/${size}x${size}/apps"
+		ln -sf "/usr/lib/office2021/icons/pml_${size}.png" "${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/apps/office2021-planmaker.png"
+		ln -sf "/usr/lib/office2021/icons/prl_${size}.png" "${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/apps/office2021-presentations.png"
+		ln -sf "/usr/lib/office2021/icons/tml_${size}.png" "${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/apps/office2021-textmaker.png"
+
+		vmkdir "usr/share/icons/hicolor/${size}x${size}/mimetypes"
+		ln -sf "/usr/lib/office2021/icons/pmd_${size}.png" "${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-pmd21.png"
+		ln -sf "/usr/lib/office2021/icons/prd_${size}.png" "${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-prd21.png"
+		ln -sf "/usr/lib/office2021/icons/tmd_${size}.png" "${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-tmd21.png"
+		ln -sf "/usr/lib/office2021/icons/pmd_oth_${size}.png" "${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-pmd21-oth.png"
+		ln -sf "/usr/lib/office2021/icons/tmd_oth_${size}.png" "${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-tmd21-oth.png"
+		ln -sf "/usr/lib/office2021/icons/pmd_mso_${size}.png" "${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-pmd21-mso.png"
+		ln -sf "/usr/lib/office2021/icons/prd_mso_${size}.png" "${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-prd21-mso.png"
+		ln -sf "/usr/lib/office2021/icons/tmd_mso_${size}.png" "${DESTDIR}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-tmd21-mso.png"
+	done
+
+	vmkdir "usr/share/mime/packages"
+	vinstall "${FILESDIR}/softmaker-office-2021.xml" 0644 usr/share/mime/packages
+	vmkdir "usr/share/mime-info"
+	ln -sf /usr/lib/office2021/mime/softmaker-office-2021.mime "${DESTDIR}/usr/share/mime-info/softmaker-office-2021.mime"
+
+	vinstall "${FILESDIR}/planmaker-2021.desktop" 0644 usr/share/applications
+	vinstall "${FILESDIR}/presentations-2021.desktop" 0644 usr/share/applications
+	vinstall "${FILESDIR}/textmaker-2021.desktop" 0644 usr/share/applications
+}

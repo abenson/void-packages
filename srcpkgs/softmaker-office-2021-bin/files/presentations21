@@ -1,0 +1,10 @@
+#!/bin/bash
+# A script to run Presentations.
+ext="${@##*.}"
+shopt -s nocasematch
+case "$ext" in
+	"prs" ) /usr/lib/office2021/presentations -S\""$@"\";;
+	"pps" ) /usr/lib/office2021/presentations -S\""$@"\";;
+	"ppsx" ) /usr/lib/office2021/presentations -S\""$@"\";;
+	* ) /usr/lib/office2021/presentations "$@";;
+esac
