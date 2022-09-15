@@ -1,0 +1,29 @@
+# Template file for 'wordperfect-bin'
+pkgname=wordperfect-bin
+version=0.13
+revision=1
+_rpm="wordperfect8-${version}-1.fc37.i686.rpm"
+archs="x86_64* i686*"
+short_desc="Classic word processor for DOS/UNIX"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="custom:Proprietary"
+homepage="https://github.com/taviso/wpunix"
+distfiles="${homepage}/releases/download/v${version}/${_rpm}"
+checksum=4657f345138f6d587fde94f83a8b74988fabf60098d49d59c85e6a6439d0cf65
+nostrip=yes
+nopie=yes
+restricted=yes
+repository=nonfree
+noverifyrdeps=yes
+noshlibprovides=yes
+
+do_extract() {
+	bsdtar xf "${XBPS_SRCDISTDIR}/${pkgname}-${version}/${_rpm}" -C "${wrksrc}"
+}
+
+do_install() {
+	vbin usr/bin/wp
+	vmkdir opt/
+	vcopy opt/wp80 opt/wp80
+	vlicense opt/wp80/wpbin/README.copy
+}
