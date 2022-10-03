@@ -1,0 +1,15 @@
+# Template file for 'seer'
+pkgname=seer
+version=1.11
+revision=1
+build_style=cmake
+build_wrksrc="src"
+hostmakedepends="qt5-qmake qt5-host-tools"
+makedepends="qt5-devel qt5-charts-devel"
+short_desc="GUI frontend to gdb"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/epasveer/seer"
+changelog="https://raw.githubusercontent.com/epasveer/seer/main/CHANGELOG.md"
+distfiles="https://github.com/epasveer/seer/archive/refs/tags/v${version}.tar.gz"
+checksum=2367339afc64d1cab5319c734075e0b8e07387e887c36842b11f97d895065f44
