@@ -1,0 +1,11 @@
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -153,7 +153,7 @@
+ 
+ $(TESTS): Makefile.am checkmount.pl $(img_files)
+ 	echo "#!/bin/sh" > $@
+-	echo "sudo $(srcdir)/checkmount.pl $(top_builddir)/src $($@_volume) $($@)" >> $@
++	echo "$(srcdir)/checkmount.pl $(top_builddir)/src $($@_volume) $($@)" >> $@
+ 	chmod 755 $@
+ 
+ .PHONY: data

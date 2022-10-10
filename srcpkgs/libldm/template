@@ -1,0 +1,38 @@
+# Template file for 'libldm'
+pkgname=libldm
+version=0.2.5
+revision=1
+build_style=gnu-configure
+wrksrc="libldm-libldm-${version}"
+hostmakedepends="pkg-config gtk-doc automake libtool"
+makedepends="readline-devel json-glib-devel device-mapper-devel"
+short_desc="Libary for Managing Microsoft Windows Dynamic Disks"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="LGPL-3.0-or-later"
+homepage="https://github.com/mdbooth/libldm"
+distfiles="https://github.com/mdbooth/libldm/archive/refs/tags/libldm-${version}.tar.gz"
+checksum=61bb2f2367b1df59f818cb96794d1770a0def956bd2c343dccf1425dae3021b5
+make_check=no # needs root to run tests
+
+pre_configure() {
+	./autogen.sh
+}
+
+ldmtool_package() {
+	short_desc="${short_desc//Library/Utility}"
+	pkg_install() {
+		vmove usr/bin
+		vmove usr/share/man/man1
+	}
+}
+
+libldm-devel_package() {
+	depends="${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+	}
+}
