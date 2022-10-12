@@ -1,6 +1,6 @@
 # Template file for 'softmaker-office-2021-bin'
 pkgname=softmaker-office-2021-bin
-version=1050
+version=1054
 revision=1
 archs="x86_64"
 create_wrksrc=yes
