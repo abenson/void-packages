@@ -1,0 +1,19 @@
+# Template file for 'xxtools'
+pkgname=xxtools
+version=0.0.2022.10.12
+revision=1
+_gitrev=822d4f5647a44250aed585ccb0b9ba61dd07b3a0
+wrksrc="${pkgname}-${_gitrev}"
+short_desc="Tools to ease packaging tasks for Void Linux"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="BSD-0-Clause"
+homepage="https://github.com/Piraty/xxtools"
+distfiles="${homepage}/archive/${_gitrev}.tar.gz"
+checksum=b1b9cecfe194a1f8e4e7661f2aeb702004f9d425c5b59d57c3fced3e8c6dd8c6
+
+do_install() {
+	vbin xxadopt
+	vbin xxautobump
+	vbin xxbuild
+	vbin xxcheckorphans
+}
