@@ -1,0 +1,15 @@
+# Template file for 'trelby'
+pkgname=trelby
+version=2.4.7
+revision=1
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+makedepends="wxPython4"
+depends="python3-lxml wxPython4"
+checkdepends="$depends python3-pytest"
+short_desc="Feature-rich screenwriting program"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://www.trelby.org/"
+distfiles="https://github.com/limburgher/trelby/archive/refs/tags/${version}.tar.gz"
+checksum=7b2e421a6a4348cf3db2edb0ca6907b27768f22ae91cac42f7a50db951bf8dee
