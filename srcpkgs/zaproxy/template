@@ -1,0 +1,20 @@
+# Template file for 'zaproxy'
+pkgname=zaproxy
+version=2.12.0
+revision=1
+hostmakedepends="gradle openjdk17"
+depends="openjdk17"
+short_desc="OWASP web security tool"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="Apache-2.0"
+homepage="https://www.zaproxy.org/"
+distfiles="https://github.com/zaproxy/zaproxy/archive/refs/tags/v${version}.tar.gz"
+checksum=caae3ad419d9ea6f327cc4d3a4450748aba9dedc0377d052381c352ec7976fac
+
+do_build() {
+	gradle :zap:distLinux
+}
+
+do_install() {
+	vlicense LICENSE
+}
