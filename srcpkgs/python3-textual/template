@@ -1,0 +1,14 @@
+# Template file for 'python3-textual'
+pkgname=python3-textual
+version=0.16.0
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core"
+depends="python3-rich python3-markdown-it python3-importlib_metadata
+ python3-typing_extensions"
+short_desc="Rapid Application Development framework for Python"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://textual.textualize.io/"
+distfiles="https://github.com/Textualize/textual/archive/v${version}.tar.gz"
+checksum=32dda40bbd661e3b85cf99568598b969de4b5dd0c9f7415f0872ef5cd6ec00c0
