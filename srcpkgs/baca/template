@@ -1,0 +1,14 @@
+# Template file for 'baca'
+pkgname=baca
+version=0.1.1
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core"
+depends="python3-textual python3-BeautifulSoup4 python3-appdirs python3-peewee
+ python3-markdownify python3-fuzzywuzzy"
+short_desc="TUI Ebook Reader"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/wustho/baca"
+distfiles="${PYPI_SITE}/b/baca/baca-${version}.tar.gz"
+checksum=2d590e99d5552271a5a98db759852a776a8e3bc067a925e8f83d2e7f82651e91
