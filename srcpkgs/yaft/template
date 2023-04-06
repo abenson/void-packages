@@ -1,0 +1,40 @@
+# Template file for 'yaft'
+pkgname=yaft
+version=0.2.9
+revision=1
+build_style=gnu-makefile
+hostmakedepends=""
+makedepends="libX11-devel"
+depends="yaft-terminfo>=${version}_${revision}"
+short_desc="Yet another framebuffer terminal"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/uobikiemukot/yaft"
+distfiles="${homepage}/archive/v${version}.tar.gz"
+checksum=80f7e6937ff0a34f77859c684d6f8e23c55d696e0bac4ac8b2f11f785db0374c
+
+pre_configure() {
+	vsed -i makefile -e 's/all: yaft/& yaftx/g'
+}
+
+do_install() {
+	vbin yaft
+	vbin yaft_wall
+	vbin yaftx
+	vman man/yaft.1
+	vmkdir usr/share/terminfo
+	tic -o ${DESTDIR}/usr/share/terminfo info/yaft.src
+}
+
+yaft-terminfo_package() {
+	pkg_install() {
+		vmove usr/share/terminfo
+	}
+}
+
+yaftx_package() {
+	depends="yaft-terminfo>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/bin/yaftx
+	}
+}
