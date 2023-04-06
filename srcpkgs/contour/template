@@ -1,14 +1,15 @@
 # Template file for 'contour'
 pkgname=contour
-version=0.3.11.258
+version=0.3.12.262
 revision=1
 build_style=cmake
-hostmakedepends=""
-makedepends=""
-depends=""
+hostmakedepends="pkg-config"
+makedepends="fmt-devel gsl-devel ncurses-devel freetype-devel fontconfig-devel
+ harfbuzz-devel libxcb-devel yaml-cpp-devel qt5-devel catch2"
+checkdepends="$depends"
 short_desc=" Modern C++ Terminal Emulator "
 maintainer="Andrew Benson <abenson+void@gmail.com>"
 license="Apache-2.0"
 homepage="https://github.com/contour-terminal/contour"
 distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz "
-checksum=badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb
+checksum=f9d7b154745e25e20c93f100b30934621460563f524782dca979ceed8f4ed0d2
