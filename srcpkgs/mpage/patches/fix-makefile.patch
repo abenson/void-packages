@@ -1,0 +1,49 @@
+--- a/Makefile
++++ b/Makefile
+@@ -32,7 +32,7 @@
+ # Set this to an ANSI compatible C compiler (preferably gcc)
+ # See also system specific settings below
+ #CC=cc
+-CC=gcc
++CC?=gcc
+ 
+ ############################################################################
+ #
+@@ -62,7 +62,7 @@
+ #PREFIX=/usr
+ BINDIR=$(PREFIX)/bin
+ LIBDIR=$(PREFIX)/share
+-MANDIR=$(PREFIX)/man/man1
++MANDIR=$(PREFIX)/share/man/man1
+ 
+ #
+ # A default encoding is given in encoding.h. Setting ENCODING=1 will
+@@ -115,7 +115,9 @@
+ # If you are using gcc, you probably don't need to change anything here.
+ 
+ # Linux:
+-CFLAGS = -O2 -s $(DEFS) -Wall
++#CFLAGS = -O2 -s $(DEFS) -Wall
++
++CFLAGS+= $(DEFS)
+ 
+ # AIX (xlC on aix 4):
+ #CFLAGS = -O2 -s $(DEFS)
+@@ -188,10 +188,10 @@
+ # add your proper install stuff
+ #
+ install:
+-	if [ ! -d $(LIBDIR)/mpage ] ; then mkdir -p $(LIBDIR)/mpage ; fi
+-	if [ ! -d $(BINDIR) ] ; then mkdir -p $(BINDIR) ; fi
+-	if [ ! -d $(MANDIR) ] ; then mkdir -p $(MANDIR) ; fi
+-	cp mpage$(E) $(BINDIR)
+-	cp mpage.1 $(MANDIR)
+-	-cp Encodings/* $(LIBDIR)/mpage
+-	-chmod 644 $(LIBDIR)/mpage/*
++	if [ ! -d $(DESTDIR)$(LIBDIR)/mpage ] ; then mkdir -p $(DESTDIR)$(LIBDIR)/mpage ; fi
++	if [ ! -d $(DESTDIR)$(BINDIR) ] ; then mkdir -p $(DESTDIR)$(BINDIR) ; fi
++	if [ ! -d $(DESTDIR)$(MANDIR) ] ; then mkdir -p $(DESTDIR)$(MANDIR) ; fi
++	cp mpage$(E) $(DESTDIR)$(BINDIR)
++	cp mpage.1 $(DESTDIR)$(MANDIR)
++	-cp Encodings/* $(DESTDIR)$(LIBDIR)/mpage
++	-chmod 644 $(DESTDIR)$(LIBDIR)/mpage/*
