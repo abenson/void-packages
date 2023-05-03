@@ -1,7 +1,8 @@
 # Template file for 'qmltermwidget'
 pkgname=qmltermwidget
 version=0.2.0
-revision=1
+revision=2
+_githash=63228027e1f97c24abb907550b22ee91836929c5
 build_style=qmake
 hostmakedepends="qt5-host-tools qt5-qmake"
 makedepends="qt5-devel qt5-declarative-devel"
@@ -9,5 +10,5 @@ short_desc="QML port of qtermwidget"
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/Swordfish90/qmltermwidget"
-distfiles="${homepage}/archive/${version}.tar.gz"
-checksum=23e19eedb59d6fe3e37ecc06872f54befd94384946926e009c42c4b39914cfe2
+distfiles="${homepage}/archive/${_githash}.tar.gz"
+checksum=672eea03da5c2617c88ece349bd8d253d790be2e3d5429c0e5e2d682529518dd
