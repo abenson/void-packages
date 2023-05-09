@@ -1,0 +1,11 @@
+--- a/src/main.c
++++ b/src/main.c
+@@ -524,7 +524,7 @@
+ int
+ main(int argc, char **argv)
+ {
+-	char *rom_filename = "rom.bin";
++	char *rom_filename = "/usr/lib/x16emu/rom.bin";
+ 	char rom_path_data[PATH_MAX];
+ 
+ 	char *rom_path = rom_path_data;

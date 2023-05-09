@@ -1,0 +1,20 @@
+# Template file for 'x16-emulator'
+pkgname=x16-emulator
+version=42
+revision=1
+build_style=gnu-makefile
+make_use_env=yes
+hostmakedepends="pkg-config"
+makedepends="SDL2-devel zlib-devel"
+short_desc="Emulator for the Commander X16 8-bit computer"
+maintainer="Andrew Benson <abenson@gmail.com>"
+license="BSD-2-Clause"
+homepage="https://www.commanderx16.com/"
+distfiles="https://github.com/X16Community/x16-emulator/archive/r${version}.tar.gz"
+checksum=cc62b068450e9804c319181b2f6fc7bbd0514f128bb597e7d176ef90347623c5
+
+do_install() {
+	vlicense LICENSE
+	vbin x16emu
+	vbin makecart
+}

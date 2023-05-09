@@ -1,0 +1,13 @@
+--- a/Makefile
++++ b/Makefile
+@@ -20,8 +20,8 @@
+ 	SDL2CONFIG=sdl2-config
+ endif
+ 
+-CFLAGS=-std=c99 -O3 -Wall -Werror -g $(shell $(SDL2CONFIG) --cflags) -Isrc/extern/include -Isrc/extern/src
+-LDFLAGS=$(shell $(SDL2CONFIG) --libs) -lm -lz
++CFLAGS+=$(shell $(SDL2CONFIG) --cflags) -Isrc/extern/include -Isrc/extern/src
++LDFLAGS+=$(shell $(SDL2CONFIG) --libs) -lm -lz
+ 
+ X16_ODIR = build/x16emu
+ X16_SDIR = src
