@@ -1,0 +1,21 @@
+# Template file for 'x16-emulator-rom'
+pkgname=x16-emulator-rom
+version=42
+revision=1
+hostmakedepends="cc65"
+short_desc="Emulator for the Commander X16 8-bit computer - ROM"
+maintainer="Andrewb Benson <abenson+void@gmail.com>"
+license="custom:Proprietary"
+homepage="https://www.commanderx16.com/"
+distfiles="https://github.com/X16Community/x16-rom/archive/r${version}.tar.gz"
+checksum=78c919e32a464048b78303aa6f12f829e4d5ca6fa0bd7df03219078e3bc4184c
+
+unset CC AS LD
+
+do_build() {
+	make
+}
+
+do_install() {
+	vlicense LICENSE.md
+}
