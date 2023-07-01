@@ -1,0 +1,19 @@
+# Template file for 'python3-mdit-py-plugins'
+pkgname=python3-mdit-py-plugins
+version=0.4.0
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core python3-flit_core"
+depends="python3-markdown-it"
+checkdepends="$depends python3-pytest-cov"
+short_desc="Collection of plugins for markdown-it"
+maintainer="Andrew Benson <abenson@gmail.com>"
+license="MIT"
+homepage="https://github.com/executablebooks/mdit-py-plugins"
+distfiles="${PYPI_SITE}/m/mdit_py_plugins/mdit_py_plugins-${version}.tar.gz"
+checksum=d8ab27e9aed6c38aa716819fedfde15ca275715955f8a185a8e1cf90fb1d2c1b
+make_check=no # no tests defined
+
+post_install() {
+	vlicense LICENSE
+}
