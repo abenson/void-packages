@@ -1,0 +1,12 @@
+# Template file for 'python3-rinoh-typeface-texgyreheros'
+pkgname=python3-rinoh-typeface-texgyreheros
+version=0.1.1
+revision=1
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+short_desc="TeX Gyre Heros typeface for Rinoh"
+maintainer="Andrew Benson <abenson@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/brechtm/rinoh-typeface-texgyreheros"
+distfiles="${PYPI_SITE}/r/rinoh-typeface-texgyreheros/rinoh-typeface-texgyreheros-${version}.tar.gz"
+checksum=fd7082e917bccc292894447f11d15a3efce9f1386056118b57b66cc2f5a36bbd
