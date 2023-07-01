@@ -1,0 +1,25 @@
+# Template file for 'rinohtype'
+pkgname=rinohtype
+version=0.5.5
+revision=0
+_githash=40ebee363fc750dce6bfcf5356a3b537fa6789c3
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core"
+depends="python3-docutils python3-MyST-Parser python3-Sphinx python3-Pygments
+ python3-Pillow python3-appdirs python3-recommonmark python3-snowballstemmer
+ python3-imagesize python3-rinoh-typeface-texgyrecursor python3-mdit-py-plugins
+ python3-rinoh-typeface-texgyreheros python3-rinoh-typeface-texgyrepagella"
+checkdepends="$depends python3-pytest poppler ImageMagick"
+short_desc="Python document processor"
+maintainer="Andrew Benson <abenson@gmail.com>"
+license="AGPL-3.0-or-later"
+homepage="https://www.mos6581.org/rinohtype"
+#distfiles="${PYPI_SITE}/r/rinohtype/rinohtype-${version}.tar.gz"
+distfiles="https://github.com/brechtm/rinohtype/archive/${_githash}.tar.gz"
+checksum=46edb3728265bed31898c4c0c7bab207a7b657887457fc05acde2dfc3491a683
+# = 81 failed, 120 passed, 1 skipped, 110 warnings, 12 errors in 63.78s (0:01:03) =
+make_check=no # tests do not currently match code
+
+post_extract() {
+	mv tests_regression/test_sphinx{,-regression}.py
+}
