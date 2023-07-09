@@ -1,0 +1,20 @@
+# Template file for 'rst2pdf'
+pkgname=rst2pdf
+version=0.100
+revision=1
+build_style=python3-module
+hostmakedepends="python3-setuptools_scm"
+depends="python3-docutils python3-importlib_metadata python3-Jinja2
+ python3-packaging python3-Pygments python3-yaml python3-smartypants
+ python3-reportlab python3-docutils python3-svglib"
+checkdepends="$depends python3-Sphinx"
+short_desc="Use a text editor, make a PDF"
+maintainer="Andrew Benson <abenson@gmail.com>"
+license="MIT"
+homepage="https://rst2pdf.org/"
+distfiles="https://github.com/rst2pdf/rst2pdf/archive/${version}.tar.gz"
+checksum=a9a5d8caf9316df7d0a1bed786602b09ca17d0685e3c5b49ccc83dc1fcb669db
+
+post_install() {
+	vlicense LICENSE{.txt,}
+}

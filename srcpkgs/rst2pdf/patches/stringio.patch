@@ -1,0 +1,11 @@
+--- a/rst2pdf/writer.py
++++ b/rst2pdf/writer.py
+@@ -1,7 +1,7 @@
+ # -*- coding: utf-8 -*-
+ # See LICENSE.txt for licensing terms
+ 
+-from StringIO import StringIO
++from io import StringIO
+ 
+ from docutils import writers
+ 

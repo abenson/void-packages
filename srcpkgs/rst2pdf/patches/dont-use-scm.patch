@@ -1,0 +1,11 @@
+--- a/setup.py
++++ b/setup.py
+@@ -26,7 +26,7 @@
+         ],
+     },
+     dependency_links=[],
+-    use_scm_version=True,
++    use_scm_version=False,
+     install_requires=[
+         'docutils',
+         'importlib_metadata',
