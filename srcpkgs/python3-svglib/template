@@ -1,0 +1,14 @@
+# Template file for 'python3-svglib'
+pkgname=python3-svglib
+version=1.5.1
+revision=1
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+depends="python3-reportlab python3-lxml python3-cssselect2"
+checkdepends="$depends python3-pytest"
+short_desc="Library for reading and converting SVG"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="LGPL-3.0-or-later"
+homepage="https://github.com/deeplook/svglib"
+distfiles="${PYPI_SITE}/s/svglib/svglib-${version}.tar.gz"
+checksum=3ae765d3a9409ee60c0fb4d24c2deb6a80617aa927054f5bcd7fc98f0695e587
