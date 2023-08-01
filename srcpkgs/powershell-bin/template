@@ -1,0 +1,37 @@
+# Template file for 'powershell-bin'
+pkgname=powershell-bin
+version=7.6.4
+revision=1
+archs="x86_64* aarch64"
+hostmakedepends="patchelf"
+short_desc="Cross-platform automation and configuration tool/framework"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/Powershell/Powershell"
+
+case $XBPS_TARGET_MACHINE in
+	x86_64)
+		_arch="x64"
+		checksum=4471b5a36bfe86ec7af8525d36bb1cacba0128e7aac22d05cc064bc00e604721
+		;;
+	x86_64-musl)
+		_arch="musl-x64"
+		checksum=2c7c18870b1ad0c107b1665b5f8733b656eb67260f6a6970aba4e7773287d8fd
+		;;
+	aarch64)
+		_arch="arm64"
+		checksum=d4ef2382fa452f2ccbdb48a01adbbce9ed64954872123970c16be6d086d1224b
+		;;
+esac
+
+distfiles="${homepage}/releases/download/v${version}/powershell-${version}-linux-${_arch}.tar.gz"
+
+do_install() {
+	mkdir -p ${DESTDIR}/etc/profile.d
+	echo 'export POWERSHELL_UPDATECHECK=Off' > ${DESTDIR}/etc/profile.d/pwsh.sh
+	mkdir -p ${DESTDIR}/opt
+	cp -r . ${DESTDIR}/opt/powershell
+	mkdir -p ${DESTDIR}/usr/bin
+	chmod 0755 ${DESTDIR}/opt/powershell/pwsh
+	ln -sf /opt/powershell/pwsh ${DESTDIR}/usr/bin/pwsh
+}
