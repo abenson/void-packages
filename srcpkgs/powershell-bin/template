@@ -1,0 +1,35 @@
+# Template file for 'powershell-bin'
+pkgname=powershell-bin
+version=7.5.0
+revision=1
+archs="x86_64* aarch64"
+hostmakedepends="patchelf"
+short_desc="Cross-platform automation and configuration tool/framework"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/Powershell/Powershell"
+
+case $XBPS_TARGET_MACHINE in
+	x86_64)
+		_arch="x64"
+		checksum=7ebb0048a38009de5a59d620a10f33d7ba4920ace2379b104a67fafb79e2841b
+		;;
+	x86_64-musl)
+		_arch="musl-x64"
+		checksum=ff93da859d43ebf62c9bc63ab7544fed4056316ea1e92e7b2b657ed060666504
+		;;
+	aarch64)
+		_arch="arm64"
+		checksum=a3b6a1d14897974aea732d82970c86dd17ffc57a5fc4f4bfabfe2dd272ff6c40
+		;;
+esac
+
+distfiles="${homepage}/releases/download/v${version}/powershell-${version}-linux-${_arch}.tar.gz"
+
+do_install() {
+	mkdir -p ${DESTDIR}/opt
+	cp -r . ${DESTDIR}/opt/powershell
+	mkdir -p ${DESTDIR}/usr/bin
+	chmod 0755 ${DESTDIR}/opt/powershell/pwsh
+	ln -sf /opt/powershell/pwsh ${DESTDIR}/usr/bin/pwsh
+}
