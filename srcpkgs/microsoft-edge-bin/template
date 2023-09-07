@@ -1,0 +1,20 @@
+# Template file for 'microsoft-edge-bin'
+pkgname=microsoft-edge-bin
+version=116.0.1938.69
+revision=1
+archs="x86_64"
+hostmakedepends="dpkg"
+short_desc="Microsoft's Chromium Based Browser"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="custom:Proprietary"
+homepage="https://www.microsoft.com/en-us/edge"
+distfiles="https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_${version}-1_amd64.deb"
+checksum=c59b15a54d2a2da2d1bc01d8459de3db3f2e75b8f9177643ac1da30149ba0379
+nonfree=yes
+restricted=yes
+
+do_install() {
+	for dir in etc opt usr; do 
+		cp -r $dir $DESTDIR/
+	done
+}
