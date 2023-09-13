@@ -1,0 +1,13 @@
+# Template file for 'scalpel'
+pkgname=scalpel
+version=2.0.2
+revision=1
+_git_hash=a6d81b6d0cf73971decfb67314d782d30d92095c
+build_style=gnu-configure
+makedepends="tre-devel"
+short_desc="Fast file carver"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/nolaforensix/scalpel-2.02"
+distfiles="${homepage}/archive/${_git_hash}.tar.gz"
+checksum=3d8b7a535558fa94e123161e8aea64e85994c74b9904208e6dcf4163cc034754
