@@ -1,0 +1,18 @@
+# Template file for 'python3-pyee'
+pkgname=python3-pyee
+version=11.0.1
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core python3-setuptools_scm python3-wheel"
+depends="python3-Twisted"
+checkdepends="$depends python3-pytest-asyncio python3-pytest-trio"
+short_desc="Rough port of Node.js's EventEmitter to Python"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://pyee.readthedocs.io/en/latest/"
+distfiles="${PYPI_SITE}/p/pyee/pyee-${version}.tar.gz"
+checksum=a642c51e3885a33ead087286e35212783a4e9b8d6514a10a5db4e57ac57b2b29
+
+post_install() {
+	vlicense LICENSE
+}
