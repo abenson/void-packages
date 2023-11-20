@@ -1,19 +1,14 @@
 # Template file for 'python3-ffmpeg-python'
 pkgname=python3-ffmpeg-python
-version=0.2.0
-revision=6
+version=2.0.4
+revision=1
 build_style=python3-module
 hostmakedepends="python3-setuptools"
-depends="ffmpeg python3-future"
+depends="ffmpeg python3-pyee python3-typing_extensions"
 checkdepends="$depends python3-pytest python3-pytest-mock"
 short_desc="Python bindings for FFmpeg - with complex filtering support"
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="Apache-2.0"
-homepage="https://github.com/kkroening/ffmpeg-python"
-distfiles="https://github.com/kkroening/ffmpeg-python/archive/${version}.tar.gz"
-checksum="01b6b7640f00585a404194a358358bdf7f4050cedcd99f41416ac8b27222c9f1"
-
-post_patch() {
-	# Build doesn't *need* pytest-runner and Void doesn't provide it
-	vsed -e '/pytest-runner/d' -i setup.py
-}
+homepage="https://github.com/jonghwanhyeon/python-ffmpeg"
+distfiles="https://github.com/jonghwanhyeon/python-ffmpeg/archive/v${version}.tar.gz"
+checksum=a7977cc3d8658f94a33cd15c5710e008c9e5442df32f57e7df8cbb4ad38a97f3
