@@ -1,0 +1,15 @@
+# Template file for 'dc3dd'
+pkgname=dc3dd
+version=7.3.1
+revision=1
+build_style=gnu-configure
+short_desc="Patched dd with added features for forensics"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://sourceforge.net/projects/dc3dd/"
+distfiles="${SOURCEFORGE_SITE}/dc3dd/${version}/dc3dd-${version}.zip"
+checksum=bd1b66d20a4020ab94b512e56d76cb5f86470d0216081586d596366927cb8d8b
+
+post_extract() {
+	chmod +x configure
+}
