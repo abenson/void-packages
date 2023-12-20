@@ -1,7 +1,7 @@
 # Template file for 'backintime'
 pkgname=backintime
-version=1.3.1
-revision=3
+version=1.4.1
+revision=1
 configure_args="--python3"
 pycompile_dirs="/usr/share/backintime"
 hostmakedepends="gettext python3"
@@ -10,8 +10,8 @@ short_desc="Simple backup tool for Linux"
 maintainer="Alpicoid <alpicoid@tuta.io>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/bit-team/backintime"
-distfiles="https://github.com/bit-team/backintime/releases/download/${version}/backintime-${version}.tar.gz"
-checksum=4ffbca4f92c16a7f1c6ce2df17ea88ca13ebf70a2771286e3eebacdce3a2a44e
+distfiles="https://github.com/bit-team/backintime/releases/download/v${version}/backintime-${version}.tar.gz"
+checksum=bc758022fbb3ef14177a258c1292adc60ff4efee93129d147eab724faed9e21e
 python_version=3
 
 do_configure() {
@@ -47,7 +47,6 @@ backintime-qt_package() {
 		vmove usr/share/bash-completion/completions/backintime-qt
 		vmove usr/share/dbus-1
 		vmove usr/share/doc/backintime-qt
-		vmove usr/share/doc/qt
 		vmove usr/share/icons
 		vmove "usr/share/man/man1/backintime-qt*"
 		vmove usr/share/polkit-1
