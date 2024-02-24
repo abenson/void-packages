@@ -1,7 +1,7 @@
 # Template file for 'freerdp'
 pkgname=freerdp
-version=2.10.0
-revision=3
+version=3.3.0
+revision=1
 build_style=cmake
 configure_args="-DWITH_ALSA=ON -DWITH_CUPS=OFF -DWITH_FFMPEG=ON
  -DWITH_GSTREAMER_0_10=OFF -DWITH_GSTREAMER_1_0=OFF -DWITH_JPEG=ON
@@ -13,14 +13,15 @@ hostmakedepends="pkg-config xmlto wayland-devel"
 makedepends="alsa-lib-devel ffmpeg-devel glib-devel libusb-devel
  libXcursor-devel libXinerama-devel libXrandr-devel libXv-devel
  libjpeg-turbo-devel openssl-devel libxkbfile-devel pulseaudio-devel
- libxkbcommon-devel wayland-devel cairo-devel libXdamage-devel"
+ libxkbcommon-devel wayland-devel cairo-devel libXdamage-devel
+ pkcs11-helper-devel mit-krb5-devel icu-devel fuse3-devel"
 short_desc="Free RDP (Remote Desktop Protocol) client"
-maintainer="Orphaned <orphan@voidlinux.org>"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
 license="Apache-2.0"
 homepage="https://www.freerdp.com/"
 changelog="https://raw.githubusercontent.com/FreeRDP/FreeRDP/2.10.0/ChangeLog"
 distfiles="https://github.com/FreeRDP/FreeRDP/archive/${version}.tar.gz"
-checksum=88fa59f8e8338d5cb2490d159480564562a5624f3a3572c89fa3070b9626835c
+checksum=1667af42f8e84bd6e1478fe368c683f7bba6c736655483b0e778b25706bac9b3
 CFLAGS="-Wno-dev"
 
 case "$XBPS_TARGET_MACHINE" in
@@ -78,10 +79,10 @@ freerdp-server-devel_package() {
 	depends="libfreerdp-server>=${version}_${revision}"
 	short_desc="Free RDP (Remote Desktop Protocol) server - development files"
 	pkg_install() {
-		vmove usr/lib/cmake/FreeRDP-Server2
-		vmove usr/lib/cmake/FreeRDP-Shadow2
-		vmove usr/lib/pkgconfig/freerdp-server2.pc
-		vmove usr/lib/pkgconfig/freerdp-shadow2.pc
+		vmove "usr/lib/cmake/FreeRDP-Server*"
+		vmove "usr/lib/cmake/FreeRDP-Shadow*"
+		vmove "usr/lib/pkgconfig/freerdp-server*.pc"
+		vmove "usr/lib/pkgconfig/freerdp-shadow*.pc"
 		vmove "usr/lib/libfreerdp-server*.so"
 		vmove "usr/lib/libfreerdp-shadow*.so"
 	}
