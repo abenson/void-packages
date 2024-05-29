@@ -1,6 +1,6 @@
 # Template file for 'pcsclite'
 pkgname=pcsclite
-version=2.2.2
+version=2.2.3
 revision=1
 build_style=meson
 configure_args="-Dlibudev=true -Dlibsystemd=false -Dpolkit=false"
@@ -10,9 +10,9 @@ depends="python3"
 short_desc="Middleware to access a smart card using SCard API (PC/SC)"
 maintainer="Andrew Benson <abenson+void@gmail.com>"
 license="BSD-2-Clause, GPL-3.0-or-later"
-homepage="https://salsa.debian.org/debian/pcsc-lite"
-distfiles="https://salsa.debian.org/debian/pcsc-lite/-/archive/upstream/${version}/pcsc-lite-upstream-${version}.tar.gz"
-checksum=007b9b51a22a652dcf067eacfe43db5f06a49e8c94df7df4e4bae50055b3685b
+homepage="https://pcsclite.apdu.fr/"
+distfiles="https://pcsclite.apdu.fr/files/pcsc-lite-${version}.tar.xz"
+checksum=cab1e62755713f62ce1b567954dbb0e9a7e668ffbc3bbad3ce85c53f8f4e00a4
 
 post_install() {
 	vsv pcscd
