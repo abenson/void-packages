@@ -1,0 +1,12 @@
+# Template file for 'xmlada'
+pkgname=xmlada
+version=23.0.0
+revision=1
+build_style=gnu-configure
+hostmakedepends="gcc-ada gprbuild-bootstrap"
+short_desc="XML Parser for Ada95"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/AdaCore/xmlada"
+distfiles="https://github.com/AdaCore/xmlada/archive/refs/tags/v${version}.tar.gz"
+checksum=66245a68f2e391c8dc8dc50d6d5f109eb3b371e261d095d2002dff3927dd5253
