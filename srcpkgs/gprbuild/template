@@ -1,0 +1,24 @@
+# Template file for 'gprbuild'
+pkgname=gprbuild
+version=23.0.0
+revision=1
+build_style=gnu-makefile
+make_args="LIBRARY_TYPE=relocatable"
+hostmakedepends="gcc-ada gprbuild-bootstrap which"
+makedepends="xmlada"
+short_desc="GNAT’s Project Manager"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://docs.adacore.com/gprbuild-docs/html/gprbuild_ug.html"
+distfiles="https://github.com/AdaCore/gprbuild/archive/refs/tags/v${version}.tar.gz>gprbuild-${version}.tar.gz
+ https://github.com/AdaCore/gprconfig_kb/archive/refs/tags/v${version}.tar.gz>gprconfig_kb-${version}.tar.gz"
+checksum="141b403ea8a3f82b58b6a8690f8409fe295f3692b667ba3ec487fafcbd26e389
+ 182d9108c91390ddd67c841e45a3fc9dd23a94b33d4a1f05ed2788c1fb9b7dd2"
+build_wrksrc="gprbuild-${version}"
+
+
+do_configure() {
+	mv ${wrksrc}/gprconfig_kb-${version} gprconfig_kb
+	make BUILD=production setup
+}
+
