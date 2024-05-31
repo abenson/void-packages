@@ -1,0 +1,15 @@
+# Template file for 'kdbg'
+pkgname=kdbg
+version=3.1.0
+revision=1
+build_style=cmake
+hostmakedepends="pkg-config extra-cmake-modules qt5-host-tools gettext"
+makedepends="qt5-devel ki18n-devel kiconthemes-devel kconfig-devel
+ kxmlgui-devel kwindowsystem-devel"
+depends="gdb"
+short_desc="Graphical user interface to the GNU debugger"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://www.kdbg.org"
+distfiles="${SOURCEFORGE_SITE}/kdbg/Source%20Code/${version}/kdbg-${version}.tar.gz"
+checksum=68b5ffd065e87fbecda908fb23b1540998f20ed1753fc309e3f34724d9b862bd
