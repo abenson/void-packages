@@ -1,0 +1,19 @@
+# Template file for 'typstwriter'
+pkgname=typstwriter
+version=0.0.2024.07.24
+revision=1
+_gitrev=f652f895950d53711f3062b0d187f8c9315a505d
+build_style=python3-pep517
+hostmakedepends="python3-flit_core"
+depends="python3-QtPy python3-Pygments python3-superqt python3-send2trash
+ libpyside-python3 python3-PyQt5"
+short_desc="Integrated editor for the typst typesetting system"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/Bzero/typstwriter"
+distfiles="https://github.com/Bzero/typstwriter/archive/${_gitrev}.tar.gz"
+checksum=dc95b7b81eb307cec4ca830f98b526cab0a0bb01ce0659b0356bdb80bf7df557
+
+post_install() {
+	vlicense LICENSE
+}
