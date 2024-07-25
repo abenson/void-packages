@@ -1,0 +1,18 @@
+# Template file for 'python3-superqt'
+pkgname=python3-superqt
+version=0.6.7
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core hatchling hatch-vcs"
+depends="python3-Pygments python3-QtPy python3-typing_extensions"
+short_desc="Missing widgets and components for Qt-python"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://pyapp-kit.github.io/superqt/"
+distfiles="${PYPI_SITE}/s/superqt/superqt-${version}.tar.gz"
+checksum=af80d5687ec75df6c3e54119ee895e42f79742ed326684c79425414b5c20f1e3
+make_check=no # too lazy to package deps
+
+post_install() {
+	vlicense LICENSE
+}
