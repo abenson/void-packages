@@ -1,20 +1,29 @@
 # Template file for 'ProcDump-for-Linux'
 pkgname=ProcDump-for-Linux
-version=1.1.1
+version=3.3.0
 revision=1
-build_style=gnu-makefile
-makedepends="zlib-devel"
+build_style=cmake
+_bpfver=1.2.2
+hostmakedepends="pkg-config clang17 bpftool"
+makedepends="zlib-devel elfutils-devel libbpf-devel"
 depends="gdb"
 short_desc="ProcDump-for-Linux provides a way to create core dumps"
 maintainer="Orphaned <orphan@voidlinux.org>"
 license="MIT"
 homepage="https://github.com/Microsoft/ProcDump-for-Linux"
-distfiles="https://github.com/Microsoft/${pkgname}/archive/${version}.tar.gz"
-checksum=712be77d97f802ca7ad7eaaa521f7742c15db93af0c968c8b54e48e3ab341baa
-disable_parallel_build=yes
+distfiles="https://github.com/Microsoft/${pkgname}/archive/${version}.tar.gz
+ https://github.com/libbpf/libbpf/archive/refs/tags/v${_bpfver}.tar.gz>libbpf-${_bpfver}.tar.gz"
+checksum="4d18bf54502b1ae50994c6237439fcec74868cb2324b2213cf67fc4a9bf24e33
+ 32b0c41eabfbbe8e0c8aea784d7495387ff9171b5a338480a8fbaceb9da8d5e5"
+skip_extraction="libbpf-${_bpfver}.tar.gz"
 
-CFLAGS="-fcommon"
+post_extract() {
+	vsrcextract -C build/libbpf/src/libbpf libbpf-${_bpfver}.tar.gz
+	cd build/libbpf/src/libbpf/src && CFLAGS="-g -O2 -Werror -Wall -fPIC" make
+}
 
-post_install() {
+do_install() {
+	vbin build/procdump
+	vman build/procdump.1.gz
 	vlicense LICENSE
 }

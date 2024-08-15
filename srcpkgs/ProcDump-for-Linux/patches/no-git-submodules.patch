@@ -1,0 +1,18 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -233,8 +233,6 @@
+ include(ExternalProject)
+ 
+ ExternalProject_Add(libbpf
+-    GIT_REPOSITORY https://github.com/libbpf/libbpf.git
+-    GIT_TAG v1.2.2
+     PREFIX ./libbpf
+     CONFIGURE_COMMAND ""
+     BUILD_COMMAND cd ../libbpf/src && bash -c "CFLAGS=\"-g -O2 -Werror -Wall -fPIC\" make"
+@@ -283,4 +281,4 @@
+                    DEPENDS ${procdump_ebpf_SOURCE_DIR}/procdump_ebpf.c
+                   )
+ 
+-set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES procdump.ebpf.o)
+\ No newline at end of file
++set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES procdump.ebpf.o)
