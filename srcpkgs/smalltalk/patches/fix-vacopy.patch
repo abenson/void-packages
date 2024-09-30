@@ -1,0 +1,15 @@
+--- a/libgst/callin.c
++++ b/libgst/callin.c
+@@ -99,11 +99,7 @@
+   if (!_gst_smalltalk_initialized)
+     _gst_initialize (NULL, NULL, GST_NO_TTY);
+ 
+-#ifdef __va_copy
+-  __va_copy (save, ap);
+-#else
+-  save = ap;
+-#endif
++  va_copy (save, ap);
+ 
+   for (numArgs = 0; va_arg (ap, OOP) != NULL; numArgs++)
+     ;

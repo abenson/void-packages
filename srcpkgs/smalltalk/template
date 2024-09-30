@@ -1,0 +1,37 @@
+# Template file for 'smalltalk'
+pkgname=smalltalk
+version=3.2.5
+revision=1
+build_style=gnu-configure
+build_helper=qemu
+configure_args="--enable-gtk=no --enable-libsdl=yes --with-readline
+ --with-system-libffi --with-system-libsigsegv --with-x
+ --without-emacs --with-tk --with-tcl --libexecdir=/usr/lib/smalltalk
+ --with-imagedir=/var/lib/smalltalk"
+hostmakedepends="pkg-config zip"
+makedepends="libfreeglut-devel gmp-devel libffi-devel libltdl-devel
+ libsigsegv-devel SDL2-devel readline-devel"
+short_desc="Free implementation of the Smalltalk-80 language"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://www.gnu.org/software/smalltalk/"
+distfiles="${GNU_SITE}/smalltalk/smalltalk-${version}.tar.xz"
+checksum=819a15f7ba8a1b55f5f60b9c9a58badd6f6153b3f987b70e7b167e7755d65acc
+
+post_configure() {
+	if [ "$CROSS_BUILD" ]; then
+		vsed -i libtool \
+		 -e "s/exec [\\]\"/exec qemu-${XBPS_TARGET_QEMU_MACHINE}-static \\\\\"/"
+	fi
+}
+
+smalltalk-devel_package() {
+	depends="${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+	}
+}
