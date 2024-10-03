@@ -1,6 +1,6 @@
 # Template file for 'softmaker-office-2021-bin'
 pkgname=softmaker-office-2021-bin
-version=1054
+version=1068
 revision=1
 archs="x86_64"
 create_wrksrc=yes
@@ -21,7 +21,7 @@ desc_option_paid="Paid version of SoftMaker Office"
 
 if [ "$build_option_paid" ]; then
 	distfiles="https://www.softmaker.net/down/softmaker-office-2021-${version}-amd64.tgz" \
-	checksum=b821c237a7af35f751838598a192fea076cbdb5d47b433a7ae3947317dd7943c
+	checksum=a73819c8b89321520641358614233aa4c8933e3e2705c913e0b5b94445f6443d
 	_extract_file="office2021.tar.lzma"
 else
 	distfiles="https://www.softmaker.net/down/softmaker-freeoffice-2021-1050-amd64.tgz"
