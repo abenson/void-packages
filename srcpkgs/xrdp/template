@@ -1,0 +1,31 @@
+# Template file for 'xrdp'
+pkgname=xrdp
+version=0.10.1
+revision=1
+build_style=gnu-configure
+configure_args="--enable-pam-config=arch --enable-ipv6 --enable-opus
+ --enable-fdkaac --enable-mp3lame --enable-tjpeg --enable-pixman
+ --enable-fuse --enable-vsock --with-imlib2 --with-freetype2"
+hostmakedepends="pkg-config nasm"
+makedepends="openssl-devel pam-devel libX11-devel libXfixes-devel
+ libXrandr-devel libjpeg-turbo-devel opus-devel fdk-aac-devel lame-devel
+ pixman-devel fuse-devel imlib2-devel freetype-devel"
+checkdepends="check-devel cmocka-devel"
+short_desc="Open source RDP server"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="Apache-2.0"
+homepage="https://www.xrdp.org/"
+distfiles="https://github.com/neutrinolabs/xrdp/releases/download/v${version}/xrdp-${version}.tar.gz"
+checksum=a2535f4420080630e20f0639c30c244170003ab998cc82d7913c2be856622f83
+
+xrdp-devel_package() {
+	short_desc+=" - development files"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/xrdp/*.a"
+		vmove "usr/lib/xrdp/*.so"
+	}
+}
