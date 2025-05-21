@@ -1,6 +1,6 @@
 # Template file for 'SatDump'
 pkgname=SatDump
-version=1.2.0
+version=1.2.2
 revision=1
 build_style=cmake
 hostmakedepends="pkgconf"
@@ -14,4 +14,4 @@ license="GPL-3.0-or-later"
 homepage="https://github.com/SatDump/SatDump"
 changelog="https://github.com/SatDump/SatDump/releases"
 distfiles="https://github.com/SatDump/SatDump/archive/refs/tags/${version}.tar.gz"
-checksum=099d51864a0a3e374b0d12a9ad13d8ac263b9ab0cb88d4e5b08c2b72b9afb20e
+checksum=2ab7c6126e426ad79972b274cc380c0bb04c9e755d746d67f3af92c1dd569209
