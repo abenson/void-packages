@@ -1,0 +1,13 @@
+# Template file for 'wlmaker'
+pkgname=wlmaker
+version=0.6.1
+revision=1
+build_style=cmake
+hostmakedepends="pkg-config flex"
+makedepends="wlroots0.18-devel cairo-devel ncurses-devel"
+short_desc="Wayland compositor inspired by Window Maker"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/phkaeser/wlmaker"
+distfiles="https://github.com/phkaeser/wlmaker/releases/download/v${version}/wlmaker-${version}.tar.gz"
+checksum=3279d0dfbb0a5f6d15f470a765976205579de35cdba5f1cdf76e9045dc033b32
