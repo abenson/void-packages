@@ -1,0 +1,28 @@
+# Template file for 'wlmaker'
+pkgname=wlmaker
+version=0.0.2026.10.18
+_wlmaker_hash=7481afe45a8beb8bf5c181fdb4034c00f6eba760
+_libbase_hash=1a58652fd88fcca5d9f33d8d078434f2dc30c30b
+_inih_hash=2bbdec4a366c8c39746ee0982e7ca0febbb044b6
+revision=1
+build_style=cmake
+hostmakedepends="pkg-config flex"
+makedepends="wlroots0.20-devel cairo-devel ncurses-devel librsvg-devel
+ libxdg-basedir-devel"
+depends="xorg-server-xwayland"
+short_desc="Wayland compositor inspired by Window Maker"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/phkaeser/wlmaker"
+distfiles="https://github.com/phkaeser/wlmaker/archive/${_wlmaker_hash}.tar.gz>wlmaker-${_wlmaker_hash}.tar.gz
+ https://github.com/phkaeser/libbase/archive/${_libbase_hash}.tar.gz>libbase-${_libbase_hash}.tar.gz
+ https://github.com/benhoyt/inih/archive/${_inih_hash}.tar.gz>inih-${_inih_hash}.tar.gz"
+checksum="bc7cf688bc04807bad64245434e2b6624687a319b670ba8dfee59621c2f378c5
+ baee153110b6f2e61543960ecd5c03c1a4ebdb53f21c9cb86b6de40a2de17bf0
+ 03e3d294755d08efa136438906557ae9566a742c44fb18e112676ca54a8ca20c"
+skip_extraction="libbase-${_libbase_hash}.tar.gz inih-${_inih_hash}.tar.gz"
+
+post_extract() {
+	vsrcextract -C submodules/libbase libbase-${_libbase_hash}.tar.gz
+	vsrcextract -C submodules/inih inih-${_inih_hash}.tar.gz
+}
