@@ -1,0 +1,11 @@
+# Template file for 'ncompress'
+pkgname=ncompress
+version=5.0
+revision=1
+build_style=gnu-makefile
+short_desc="Fast, simple LZW file compressor"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="custom:PublicDomain"
+homepage="https://vapier.github.io/ncompress/"
+distfiles="https://github.com/vapier/ncompress/archive/v${version}.tar.gz"
+checksum=96ec931d06ab827fccad377839bfb91955274568392ddecf809e443443aead46
