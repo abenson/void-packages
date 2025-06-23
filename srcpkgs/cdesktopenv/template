@@ -1,0 +1,39 @@
+# Template file for 'cdesktopenv'
+pkgname=cdesktopenv
+version=2.5.2
+revision=1
+build_style=gnu-configure
+configure_args="--with-gnu-ld"
+hostmakedepends="automake libtool m4 ksh flex rpcsvc-proto mkfontscale xrdb
+ bdftopcf sessreg ncompress"
+makedepends="pam-devel libutempter-devel libXp-devel libXt-devel libXmu-devel
+ libXft-devel libXinerama-devel libXpm-devel motif-devel libXaw-devel
+ libX11-devel libXScrnSaver-devel libtirpc-devel libjpeg-turbo-devel
+ freetype-devel openssl-devel tcl-devel opensp-devel libXrender-devel
+ lmdb-devel"
+depends="rpcbind xrdb xorg-fonts ksh"
+short_desc="Common Desktop Environment"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="LGPL-2.0-only"
+homepage="https://sourceforge.net/projects/cdesktopenv/"
+distfiles="${SOURCEFORGE_SITE}/cdesktopenv/files/src/cde-${version}.tar.gz"
+checksum=5d4c2f4eee5ecf8cc2f52d5af30064a564501b524de3d2fb5a49ed4007c7d731
+make_dirs="/var/dt 0755 root root
+ /var/spool/calendar 0755 root root
+ /usr/spool 0755 root root"
+
+export LANG=C
+export LC_ALL=C
+
+pre_configure() {
+	./autogen.sh
+	export TIC="/usr/bin/tic -o${DESTDIR}/usr/dt/share/terminfo"
+}
+
+post_install() {
+	vinstall ${FILESDIR}/cde.desktop 0755 usr/share/xsessions
+	vinstall ${FILESDIR}/fonts.alias 0644 etc/dt/config/xfonts/C
+	vinstall ${FILESDIR}/fonts.dir 0644 etc/dt/config/xfonts/C
+	vbin ${FILESDIR}/startcde
+	vsv dtlogin
+}

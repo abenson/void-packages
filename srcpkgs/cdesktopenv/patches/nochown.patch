@@ -1,0 +1,8 @@
+--- a/programs/dtsearchpath/dtappg/Makefile.am
++++ b/programs/dtsearchpath/dtappg/Makefile.am
+@@ -14,5 +14,4 @@
+ 
+ # can't use INSTALL here as the program is already installed
+ install-exec-hook:
+-	chown root $(DESTDIR)$(bindir)/dtappgather
+ 	chmod 4755 $(DESTDIR)$(bindir)/dtappgather
