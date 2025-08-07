@@ -1,0 +1,16 @@
+# Template file for 'librespot'
+pkgname=librespot
+version=0.8.0
+revision=1
+build_style=cargo
+configure_args="--features portaudio-backend,pulseaudio-backend,jackaudio-backend"
+hostmakedepends="pkg-config"
+makedepends="pulseaudio-devel jack-devel portaudio-devel openssl-devel"
+short_desc="Open Source Spotify client library"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/librespot-org/librespot"
+distfiles="https://github.com/librespot-org/librespot/archive/v${version}.tar.gz"
+checksum=0e4922997e1c67d27b3f50dcc388ecb8a3c08eba23b764879071f6e9e8c07ec7
+
+export VERGEN_GIT_COMMIT_DATE='' VERGEN_GIT_SHA=''
