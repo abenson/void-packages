@@ -1,0 +1,33 @@
+# Template file for 'libpostal'
+pkgname=libpostal
+version=1.1
+revision=1
+build_style=gnu-configure
+configure_args="--disable-data-download --disable-sse2"
+hostmakedepends="pkg-config automake libtool"
+makedepends="cblas-devel"
+short_desc="C library for parsing/normalizing street addresses around the world"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/openvenues/libpostal"
+distfiles="https://github.com/openvenues/libpostal/archive/refs/tags/v${version}.tar.gz"
+checksum=8cc473a05126895f183f2578ca234428d8b58ab6fadf550deaacd3bd0ae46032
+
+pre_configure() {
+	./bootstrap.sh
+}
+
+post_install() {
+	vlicense LICENSE
+}
+
+libpostal-devel_package() {
+	depends="${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove "usr/lib/*.a"
+		vmove "usr/lib/*.so"
+	}
+}
