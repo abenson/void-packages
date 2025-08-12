@@ -1,7 +1,7 @@
 # Template file for 'linux6.13'
 pkgname=linux6.13
 version=6.13.12
-revision=1
+revision=2
 short_desc="Linux kernel and modules (${version%.*} series)"
 maintainer="Duncaen <duncaen@voidlinux.org>"
 license="GPL-2.0-only"
@@ -201,7 +201,7 @@ do_install() {
 	rm -rf ${DESTDIR}/usr/lib/firmware
 
 	for i in acpi asm-generic clocksource config crypto drm generated linux vdso \
-		math-emu media net pcmcia scsi sound trace uapi video xen dt-bindings; do
+		math-emu media net pcmcia scsi sound trace uapi video xen dt-bindings soc; do
 		if [ -d include/$i ]; then
 			cp -a include/$i ${hdrdest}/include
 		fi
