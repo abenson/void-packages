@@ -1,7 +1,7 @@
 # Template file for 'linux6.14'
 pkgname=linux6.14
 version=6.14.11
-revision=1
+revision=2
 short_desc="Linux kernel and modules (${version%.*} series)"
 maintainer="Duncaen <duncaen@voidlinux.org>"
 license="GPL-2.0-only"
@@ -208,7 +208,7 @@ do_install() {
 	# Remove firmware stuff provided by the "linux-firmware" pkg.
 	rm -rf ${DESTDIR}/usr/lib/firmware
 
-	for i in acpi asm-generic clocksource config crypto drm generated linux vdso \
+	for i in acpi asm-generic clocksource config crypto drm generated linux vdso soc \
 		math-emu media net pcmcia scsi sound trace uapi video xen dt-bindings hyperv; do
 		if [ -d include/$i ]; then
 			cp -a include/$i ${hdrdest}/include
