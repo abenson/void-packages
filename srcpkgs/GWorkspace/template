@@ -1,0 +1,19 @@
+# Template file for 'GWorkspace'
+pkgname=GWorkspace
+version=1.1.0
+revision=1
+build_style=gnu-configure
+configure_args="--enable-gwmetadata --with-inotify"
+hostmakedepends="pkg-config gnustep-make"
+makedepends="sqlite-devel gnustep-base-devel gnustep-gui-devel SystemPreferences"
+depends="SystemPreferences"
+short_desc="Workspace Manager for GNUstep"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://www.gnustep.org/experience/GWorkspace.html"
+distfiles="https://ftp.gnustep.org/pub/gnustep/usr-apps/gworkspace-${version}.tar.gz"
+checksum=ce304eb558100082c8e44a334f3c8ee692a0946d8106bc1a66a5490b14ff3f3c
+
+if [ -e /usr/share/GNUstep/Makefiles/GNUstep.sh ]; then
+	. /usr/share/GNUstep/Makefiles/GNUstep.sh
+fi
