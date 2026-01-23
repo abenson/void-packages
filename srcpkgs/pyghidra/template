@@ -1,0 +1,14 @@
+# Template file for 'pyghidra'
+pkgname=pyghidra
+version=3.0.2
+revision=1
+build_style=python3-pep517
+#makedepends="python3-devel"
+depends="python3-packaging"
+checkdepends="python3-pytest"
+short_desc="Native CPython for Ghidra"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="Apache-2.0"
+homepage="https://ghidra-sre.org/"
+distfiles="${PYPI_SITE}/p/pyghidra/pyghidra-${version}.tar.gz"
+checksum=79ad4fd571e32f343cf3fcdbd84fc6e333ef1a26475a3a8f72b629a9f3c879da
