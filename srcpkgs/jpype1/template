@@ -1,0 +1,15 @@
+# Template file for 'jpype1'
+pkgname=jpype1
+version=1.5.2
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-setuptools"
+makedepends="python3-devel"
+depends="python3-packaging openjdk21"
+checkdepends="${depends} python3-pytest PyInstaller"
+short_desc="Bridge allowing Python programs access to Java class libraries"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="Apache-2.0"
+homepage="http://www.jpype.org/"
+distfiles="https://github.com/jpype-project/jpype/releases/download/v${version}/jpype1-${version}.tar.gz"
+checksum=bb3525f8fd22b3f46b225e9945f065a74974fa27f7563f5b83ca3f9553988170
