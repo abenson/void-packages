@@ -1,0 +1,16 @@
+# Template file for 'python3-unix_ar'
+pkgname=python3-unix_ar
+version=0.2.1
+revision=1
+build_style=python3-module
+hostmakedepends="python3-setuptools"
+short_desc="AR file handling for Python"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://github.com/getninjas/unix_ar"
+distfiles="${PYPI_SITE}/u/unix-ar/unix_ar-${version}.tar.gz"
+checksum=bf9328ec70fa3a82f94dc26dc125264dbf62a2d8ffb1a3c8c8a8230175e72c4e
+
+post_install() {
+	vlicense LICENSE.txt LICENSE
+}
