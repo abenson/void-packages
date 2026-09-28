@@ -1,0 +1,17 @@
+# Template file for 'python3-rpyc'
+pkgname=python3-rpyc
+version=6.0.2
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core hatchling"
+depends="python3-plumbum"
+short_desc="Transparent and symmetric RPC library for python"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://rpyc.readthedocs.io/en/latest/"
+distfiles="${PYPI_SITE}/r/rpyc/rpyc-${version}.tar.gz"
+checksum=8e780a6a71b842128a80a337c64adfb6f919014e069951832161c9efc630c93b
+
+post_install() {
+	vlicense LICENSE
+}
