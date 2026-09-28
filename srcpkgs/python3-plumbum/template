@@ -1,0 +1,16 @@
+# Template file for 'python3-plumbum'
+pkgname=python3-plumbum
+version=2.0.2
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-poetry-core hatchling hatch-vcs"
+short_desc="Never write shell scripts again"
+maintainer="Andrew Benson <abenson+void@gmail.com>"
+license="MIT"
+homepage="https://github.com/tomerfiliba/plumbum"
+distfiles="${PYPI_SITE}/p/plumbum/plumbum-${version}.tar.gz"
+checksum=233751d7819c9e6743ec1c2405927eb4fa52a284c7b894bd10e28106a9309a92
+
+post_install() {
+	vlicense LICENSE
+}
