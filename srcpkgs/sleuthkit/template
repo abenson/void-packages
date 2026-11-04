@@ -1,9 +1,10 @@
 # Template file for 'sleuthkit'
 pkgname=sleuthkit
-version=4.13.0
+version=4.15.0
 revision=1
 build_style=gnu-configure
-hostmakedepends="automake libtool"
+configure_args="--enable-java"
+hostmakedepends="automake libtool openjdk17 apache-ant"
 makedepends="libewf-devel sqlite-devel zlib-devel"
 depends="perl"
 checkdepends="python3 wget"
@@ -13,7 +14,15 @@ license="GPL-2.0-only, IPL-1.0, CPL-1.0"
 homepage="https://www.sleuthkit.org/"
 changelog="https://github.com/sleuthkit/sleuthkit/releases"
 distfiles="https://github.com/sleuthkit/sleuthkit/archive/sleuthkit-${version}.tar.gz"
-checksum=08cb3f030fc7c3fd73f5ff418f83be309aa59cd90f146e07b529172271633a08
+checksum=4888ef54f9b404853712945218b3168696569db9167d7e01ec76e44b6c05c71c
+
+if [ -e /etc/profile.d/jdk.sh ]; then
+	. /etc/profile.d/jdk.sh
+fi
+
+if [ -e /etc/profile.d/apache-ant.sh ]; then
+	. /etc/profile.d/apache-ant.sh
+fi
 
 post_extract() {
 	sed -i 's:sys/fcntl.h:fcntl.h:g' tsk/fs/tsk_fs_i.h
@@ -21,6 +30,18 @@ post_extract() {
 
 pre_configure() {
 	./bootstrap
+}
+
+post_install() {
+	vmkdir usr/libexec/autopsy/autopsy/modules
+	mv "${DESTDIR}/usr/share/java" "${DESTDIR}/usr/libexec/autopsy/autopsy/modules/ext"
+}
+
+autopsy-sleuthkit_package() {
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/libexec/autopsy
+	}
 }
 
 sleuthkit-devel_package() {
